@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Coffee catering in San Diego | Tidewell Coffee Co.</title>
+<meta name="description" content="Tidewell Coffee Co. brings an espresso bar, baristas, sandwiches, cold pressed juices and deli sides to weddings, offices and events around San Diego. Tell us about your event and get a quote.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%278%27 fill=%27%2334506E%27/%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%277%27 fill=%27%23F6EBD9%27/%3E%3C/svg%3E">
+<link rel="stylesheet" href="base.css?v=18">
+<style>
+  /* Catering: same navy hero as the homepage with the van as the picture, three steps,
+     three services, then the quote form. One action on the page: ask for a quote. */
+  .hero { position: relative; background: var(--navy); color: var(--cream); padding: 80px 0; overflow: hidden; }
+  .hero .wrap { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+  .hero-photo { position: relative; width: 76%; justify-self: center; margin: 0; transform: rotate(-2deg); }
+  .hero-photo::before { content: ""; position: absolute; inset: 0; border-radius: 16px; background: var(--seafoam); transform: translate(16px, 16px) rotate(3deg); }
+  .hero-photo img { position: relative; display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; object-position: 40% 55%; border-radius: 16px; }
+  .hero h1 { font-size: 72px; line-height: 1; letter-spacing: -0.02em; margin: 0 0 12px; padding-bottom: 12px; background: linear-gradient(90deg, #FFFFFF, #9B9B9B); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hero .sub { max-width: 560px; }
+  .hero .btn { background: var(--cream); color: var(--navy); margin-top: 32px; }
+  .rule { display: grid; grid-template-columns: repeat(3, 1fr); text-align: center; border-bottom: 1.5px solid var(--ink); }
+  .rule span { padding: 16px; font-size: 12px; line-height: 16px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; }
+  .rule span + span { box-shadow: -1.5px 0 0 var(--ink); }
+
+  /* The skater rides a wavy line from step one to step three as the section scrolls past */
+  .track { position: relative; height: 96px; margin-top: -32px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='12'%3E%3Cpath d='M0 6Q12 0 24 6T48 6' fill='none' stroke='%2334506E' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") repeat-x left bottom; }
+  .track .skater { position: absolute; left: 0; bottom: 8px; width: 104px; color: var(--navy); transform: translateX(var(--x, 0px)) rotate(var(--tilt, 0deg)); transform-origin: 50% 100%; will-change: transform; }
+  .shots { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 80px; }
+  .shots img { display: block; width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 16px; transition: transform 500ms var(--ease); }
+  .shots figure { margin: 0; } .shots figure:nth-child(even) { margin-top: 48px; }
+  .shots figure:nth-child(2) { transition-delay: 100ms; } .shots figure:nth-child(3) { transition-delay: 200ms; } .shots figure:nth-child(4) { transition-delay: 300ms; }
+  .shots figure:hover img { transform: scale(1.03) rotate(-1deg); }
+  .steps { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; }
+  .steps li { padding-top: 40px; }
+  .steps li:nth-child(2) { transition-delay: 120ms; } .steps li:nth-child(3) { transition-delay: 240ms; }
+  /* Each number sits on a scalloped sticker that turns with the scroll */
+  .steps b { position: relative; display: grid; place-items: center; width: 96px; height: 96px; font-size: 48px; line-height: 1; font-weight: 600; color: var(--n); font-variant-numeric: tabular-nums; transition: transform 500ms var(--ease); }
+  .steps b svg { position: absolute; inset: 0; width: 100%; height: 100%; fill: var(--c); transform: rotate(calc(var(--turn, 0) * 1deg)); }
+  .steps b span { position: relative; }
+  .steps li:nth-child(1) b { --c: var(--seafoam); --n: var(--brown); transform: rotate(-6deg); }
+  .steps li:nth-child(2) b { --c: var(--olive); --n: var(--cream); transform: rotate(4deg); }
+  .steps li:nth-child(3) b { --c: var(--navy); --n: var(--cream); transform: rotate(-3deg); }
+  .steps li:hover b { transform: rotate(0deg) scale(1.08); }
+  .steps h3 { margin-top: 24px !important; }
+  .steps h3 { font-size: 24px; line-height: 32px; margin: 16px 0 8px; }
+  .steps p { max-width: 360px; }
+
+  #services { background: var(--paper); }
+  .packs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .pack { border-radius: 16px; padding: 32px; background: var(--tb); color: var(--tc); display: flex; flex-direction: column; gap: 24px; min-height: 400px; }
+  .pack h3 { font-size: 36px; line-height: 40px; letter-spacing: -0.02em; }
+  .pack ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+  .pack li { display: grid; grid-template-columns: 20px 1fr; gap: 8px; align-items: start; }
+  .pack li i { font-size: 20px; line-height: 24px; }
+  .pack .foot { margin-top: auto; padding-top: 16px; font-weight: 600; }
+
+  .incl { margin-top: 24px; border: 1.5px solid var(--ink); border-radius: 16px; padding: 32px; display: grid; grid-template-columns: 1fr 2fr; gap: 24px 48px; align-items: start; }
+  .incl h3 { font-size: 24px; line-height: 32px; }
+  .incl p { margin-top: 8px; color: var(--muted); }
+  .incl ul { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 12px 32px; }
+  .incl li { display: grid; grid-template-columns: 24px 1fr; gap: 12px; font-weight: 600; }
+  .incl li i { font-size: 24px; color: var(--navy); }
+  .food { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px 64px; align-items: start; }
+  .food img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 16px; margin-bottom: 24px; }
+  .bgrid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; margin-top: 64px; }
+  .bgrid img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 12px; transition: transform 500ms var(--ease); }
+  .bgrid img:hover { transform: scale(1.04) rotate(-1deg); }
+  .food h3 { font-size: 24px; line-height: 32px; padding-bottom: 12px; margin-bottom: 4px; border-bottom: 3px solid var(--ink); }
+  .food ul { list-style: none; padding: 0; margin: 0; }
+  .food li { padding: 16px 0; border-bottom: 1.5px solid var(--line, rgba(27, 24, 21, 0.2)); }
+  .food li b { display: block; font-size: 18px; line-height: 28px; font-weight: 600; }
+  .food li span { display: block; font-size: 14px; line-height: 20px; color: var(--muted); }
+  .food .note { margin-top: 16px; font-size: 14px; line-height: 20px; font-weight: 600; }
+
+  .tagline { background: var(--olive); color: var(--cream); }
+
+  .quote { display: grid; grid-template-columns: 5fr 7fr; gap: 64px; align-items: start; }
+  .quote h2 { font-size: 48px; line-height: 1; letter-spacing: -0.02em; margin: 0 0 16px; }
+  .quote-copy p { font-size: 20px; line-height: 28px; max-width: 440px; }
+  .quote-copy ul { list-style: none; padding: 0; margin: 32px 0 0; display: grid; gap: 12px; }
+  .quote-copy li { display: grid; grid-template-columns: 24px 1fr; gap: 12px; font-weight: 600; }
+  .quote-copy li i { font-size: 24px; color: var(--navy); }
+  .areas { margin-top: 48px; padding-top: 24px; border-top: 1.5px solid var(--ink); }
+  .areas h3 { font-size: 20px; line-height: 28px; margin-bottom: 16px; }
+  .quote-copy .areas ul { margin: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .quote-copy .areas li { display: block; padding: 4px 12px; border-radius: 9999px; box-shadow: inset 0 0 0 1.5px var(--ink); font-size: 14px; line-height: 20px; font-weight: 500; }
+  .quote-copy .areas p { margin-top: 16px; font-size: 16px; line-height: 24px; color: var(--muted); }
+  /* PLACEHOLDER FORM: this card stands in for the embedded Flashquotes intake form.
+     The embed needs a column at least 600px wide on desktop, which this one is. */
+  .fq { background: var(--paper); border: 1.5px solid var(--ink); border-radius: 16px; padding: 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .fq label { display: grid; gap: 4px; font-size: 14px; line-height: 20px; font-weight: 600; }
+  .fq .full { grid-column: 1 / -1; }
+  .fq fieldset { grid-column: 1 / -1; border: 0; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .fq legend { padding: 0; margin-bottom: 8px; font-size: 14px; line-height: 20px; font-weight: 600; }
+  .fq .chip { display: inline-flex; grid-template-columns: none; align-items: center; gap: 8px; min-height: 48px; padding: 12px 16px; border: 1.5px solid var(--ink); border-radius: 8px; background: #fff; font-weight: 500; font-size: 16px; line-height: 24px; cursor: pointer; transition: background-color 300ms var(--ease); }
+  .fq .chip input { width: 16px; height: 16px; min-height: 0; padding: 0; accent-color: var(--navy); }
+  .fq .chip:has(:checked) { background: var(--seafoam); }
+  .fq .chip:focus-within { box-shadow: 0 0 0 3px var(--seafoam); }
+  .fq input, .fq select, .fq textarea { font: inherit; font-size: 16px; line-height: 24px; font-weight: 400; color: var(--ink); background: #fff; border: 1.5px solid var(--ink); border-radius: 8px; padding: 12px; width: 100%; min-height: 48px; transition: box-shadow 300ms var(--ease); }
+  .fq textarea { min-height: 96px; resize: vertical; }
+  .fq input:focus-visible, .fq select:focus-visible, .fq textarea:focus-visible { outline: none; box-shadow: 0 0 0 3px var(--seafoam); }
+  .fq [aria-invalid="true"] { border-color: #A3341F; }
+  .fq .btn { justify-self: start; background: var(--navy); color: var(--cream); }
+  .fq-msg { grid-column: 1 / -1; font-weight: 600; min-height: 24px; }
+  .fq-note { grid-column: 1 / -1; font-size: 12px; line-height: 16px; color: var(--muted); }
+
+  #faq { background: var(--paper); }
+  .faq { max-width: 800px; border-bottom: 1.5px solid var(--ink); }
+  .faq details { border-top: 1.5px solid var(--ink); }
+  .faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 24px 0; font-size: 20px; line-height: 28px; font-weight: 600; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary i { font-size: 24px; flex: none; transition: transform 500ms var(--ease); }
+  .faq details[open] summary i { transform: rotate(45deg); }
+  .faq details p { padding: 0 48px 24px 0; max-width: 680px; }
+  footer { --foot-bg: var(--navy); }
+
+  @media (max-width: 900px) {
+    .hero { padding: 48px 0; } .hero .wrap, .steps, .packs, .quote, .food, .incl, .incl ul { grid-template-columns: 1fr; }
+    .incl { padding: 24px; } .areas { margin-top: 32px; }
+    .hero-copy { order: -1; } .hero-photo { width: 84%; }
+    .bgrid { grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 48px; }
+    .shots { grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 48px; } .shots figure:nth-child(even) { margin-top: 32px; } .hero h1 { font-size: 48px; } .hero h1 br { display: none; }
+    .rule span { padding: 12px 4px; letter-spacing: 0.08em; }
+    .steps { gap: 0; } .steps li { padding: 24px 0; } .steps li + li { border-top: 1.5px solid var(--ink); } .steps b { width: 80px; height: 80px; font-size: 40px; } .track { height: 80px; margin-top: -16px; } .track .skater { width: 88px; }
+    .pack { min-height: 0; } .pack h3 { font-size: 30px; line-height: 36px; }
+    .quote { gap: 32px; } .quote h2 { font-size: 36px; line-height: 40px; }
+    .fq { grid-template-columns: 1fr; padding: 24px; } .fq > label { grid-column: 1 / -1; }
+    .faq summary { font-size: 18px; } .faq details p { padding-right: 0; }
+  }
+</style>
+</head>
+<body>
+<main id="main">
+  <section class="hero grain" data-birds="#B4BAC0">
+    <div class="wrap">
+      <figure class="hero-photo"><img src="assets/photos/web/cart-barista.jpg" alt="A Tidewell barista smiling behind the coffee cart with an iced latte, bags of coffee and syrups on the counter" width="1200" height="1600"></figure>
+      <div class="hero-copy">
+        <h1>We bring the <br>coffee bar to you.</h1>
+        <p class="sub">A full espresso bar and our baristas, plus sandwiches, juices and deli sides from Bodega Market, set up at your wedding, office or event around San Diego.</p>
+        <a class="btn" href="#quote">Get a quote<i class="ph ph-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+  <div class="rule"><span>Weddings and parties</span><span>Office mornings</span><span>Markets and pop ups</span></div>
+
+  <section id="how">
+    <div class="wrap">
+      <div class="sec-head"><h2>How it works</h2><p class="muted">Three steps from first hello to first pour.</p></div>
+      <div class="track" aria-hidden="true"><span class="art skater"></span></div>
+      <ol class="steps">
+        <li class="reveal"><b><span>1</span></b><h3>Tell us about your event</h3><p>Date, place and how many people. The form takes about two minutes.</p></li>
+        <li class="reveal"><b><span>2</span></b><h3>Get your quote</h3><p>We send a quote built around your guest count and the drinks and food you want.</p></li>
+        <li class="reveal"><b><span>3</span></b><h3>Hold the date</h3><p>A deposit by emailed invoice books your date. We turn up early, set up and start pouring.</p></li>
+      </ol>
+      <div class="shots">
+        <figure class="reveal"><img src="assets/photos/web/cart-owner.jpg" alt="A guest laughing at the Tidewell coffee cart with a cup in hand, pastries in the case beside him" loading="lazy" style="object-position:60% 20%"></figure>
+        <figure class="reveal"><img src="assets/photos/web/iced-pour.jpg" alt="Cream being poured into an iced coffee in a Tidewell cup" loading="lazy" style="object-position:55% 50%"></figure>
+        <figure class="reveal"><img src="assets/photos/web/espresso-shots.jpg" alt="Two espresso shots pulled into glasses on the machine" loading="lazy"></figure>
+        <figure class="reveal"><img src="assets/photos/web/matcha-plate.jpg" alt="An iced matcha latte in a Tidewell cup resting on a blue California licence plate" loading="lazy"></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- DRAFT: service names and what is included are placeholders until the real catering offer is confirmed -->
+  <section id="services" class="grain">
+    <div class="wrap">
+      <div class="sec-head"><h2>What we can bring</h2><p class="muted">Every quote is built for the event, so there is no fixed price list.</p></div>
+      <div class="packs">
+        <article class="pack reveal" style="--tb:var(--olive);--tc:var(--cream)">
+          <h3>Espresso bar</h3>
+          <ul><li><i class="ph ph-check"></i>Lattes, cappuccinos, americanos and more</li><li><i class="ph ph-check"></i>Baristas, machine and cups included</li><li><i class="ph ph-check"></i>Oat and almond milk on hand</li></ul>
+          <p class="foot">Priced by guest count and hours</p>
+        </article>
+        <article class="pack reveal" style="--tb:var(--ink);--tc:var(--cream)">
+          <h3>Specialty bar</h3>
+          <ul><li><i class="ph ph-check"></i>Everything in the espresso bar</li><li><i class="ph ph-check"></i>Honey cinnamon, sea salt maple and lavender lattes</li><li><i class="ph ph-check"></i>Matcha and lemonades for the non coffee crowd</li></ul>
+          <p class="foot">Priced by guest count and hours</p>
+        </article>
+        <article class="pack reveal" style="--tb:var(--seafoam);--tc:var(--brown)">
+          <h3>Drip and cold brew</h3>
+          <ul><li><i class="ph ph-check"></i>Hot drip and cold brew, ready to pour</li><li><i class="ph ph-check"></i>Dropped off and set up, no barista needed</li><li><i class="ph ph-check"></i>Good for meetings and early starts</li></ul>
+          <p class="foot">Priced by the gallon</p>
+        </article>
+      </div>
+      <!-- DRAFT: confirm this list against what a real quote covers -->
+      <div class="incl reveal">
+        <div><h3>Every coffee bar quote includes</h3><p>One price for the lot, with no extras added on the day.</p></div>
+        <ul>
+          <li><i class="ph ph-users"></i>Baristas for the whole service</li>
+          <li><i class="ph ph-coffee"></i>Espresso machine, grinders and bar</li>
+          <li><i class="ph ph-drop"></i>Whole, oat and almond milk</li>
+          <li><i class="ph ph-flask"></i>House made syrups</li>
+          <li><i class="ph ph-stack"></i>Cups, lids and napkins</li>
+          <li><i class="ph ph-van"></i>Travel, setup and pack down</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sandwiches and juices are transcribed from the Bodega Market menus.
+       DRAFT: the deli sides come from an early proposed menu and need confirming. -->
+  <section id="food">
+    <div class="wrap">
+      <div class="sec-head"><h2>Add food from Bodega Market</h2><p class="muted">Sandwiches, cold pressed juices and deli sides, with or without the coffee bar.</p></div>
+      <div class="food">
+        <div class="reveal">
+          <img src="assets/photos/bodega/web/sandwich-close.jpg" alt="A Bodega Market focaccia sandwich layered with turkey, provolone and arugula on checkered paper" loading="lazy">
+          <h3>Sandwiches</h3>
+          <ul>
+            <li><b>Italian</b><span>Prosciutto, salami, ham, arugula, mozzarella, olive oil, dijonayo and Peppadew peppers</span></li>
+            <li><b>Turkey pesto</b><span>Turkey, provolone, arugula, olive oil and pesto</span></li>
+            <li><b>Caprese</b><span>Mozzarella, tomatoes, basil, balsamic glaze and olive oil</span></li>
+          </ul>
+          <p class="note">All served on fresh baked focaccia.</p>
+        </div>
+        <div class="reveal">
+          <img src="assets/photos/bodega/web/juices-hands.jpg" alt="Hands holding four bottles of Bodega Market cold pressed juice against orange tiles" loading="lazy">
+          <h3>Cold pressed juices</h3>
+          <ul>
+            <li><b>Hydration blend</b><span>Coconut water, lime, pineapple, agave, blue spirulina and kosher salt</span></li>
+            <li><b>Sweet green</b><span>Pineapple, Fuji apple, basil and spinach</span></li>
+            <li><b>Strawberry lemonade</b><span>Fuji apple, ginger, lemon, green apple, cucumber, strawberries and mint</span></li>
+            <li><b>Hibiscus blend</b><span>Carrot, Fuji apple, green apple, ginger, lime and hibiscus tea</span></li>
+            <li><b>Green #1</b><span>Celery, dino kale, parsley, romaine, green apple, lemon and spinach</span></li>
+            <li><b>Black cherry</b><span>Black cherry, kiwi, apple and ginger</span></li>
+          </ul>
+        </div>
+        <div class="reveal">
+          <img src="assets/photos/bodega/web/parfait.jpg" alt="A Bodega Market yogurt parfait jar layered with berries and granola" loading="lazy">
+          <h3>Deli sides</h3>
+          <ul>
+            <li><b>Chicken caesar salad</b><span>By the tray or boxed per guest</span></li>
+            <li><b>Quinoa and roasted veggie salad</b><span>By the tray or boxed per guest</span></li>
+            <li><b>Greek grain bowl</b><span>Boxed per guest</span></li>
+            <li><b>Fresh fruit cups</b><span>Cut that morning</span></li>
+            <li><b>Yogurt parfaits</b><span>With granola</span></li>
+            <li><b>Overnight oats</b><span>With berries</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="bgrid reveal">
+        <img src="assets/photos/bodega/web/sandwich-halves.jpg" alt="Two halves of a focaccia sandwich held up to show the layers" loading="lazy">
+        <img src="assets/photos/bodega/web/juices-stack.jpg" alt="Four Bodega Market juice bottles stacked in blue, red, green and orange" loading="lazy">
+        <img src="assets/photos/bodega/web/picnic-spread.jpg" alt="A picnic table with a sandwich, salad and juice on checkered paper" loading="lazy">
+        <img src="assets/photos/bodega/web/tile-sign.jpg" alt="The tiled shop wall lettered with cold pressed juice, cold drinks, tasty snacks and hot coffee" loading="lazy">
+        <img src="assets/photos/bodega/web/sandwich-hand.jpg" alt="A hand holding a focaccia sandwich wrapped in red checkered paper" loading="lazy">
+        <img src="assets/photos/bodega/web/juice-red.jpg" alt="A bottle of red Bodega Market cold pressed juice" loading="lazy">
+        <img src="assets/photos/bodega/web/focaccia-tray.jpg" alt="A tray of fresh focaccia with Bodega spelled out in peppers, beside carrots and ginger" loading="lazy">
+        <img src="assets/photos/bodega/web/juices-snacks.jpg" alt="Bodega Market juices and snacks laid out on a red surface" loading="lazy">
+        <img src="assets/photos/bodega/web/latte-cup.jpg" alt="A latte with leaf art in a Bodega Market cup" loading="lazy">
+        <img src="assets/photos/bodega/web/shop-shelves.jpg" alt="Shelves of snacks and pantry goods inside Bodega Market" loading="lazy">
+        <img src="assets/photos/bodega/web/juice-bottles.jpg" alt="Two bottles of Bodega Market juice on a steel counter" loading="lazy">
+        <img src="assets/photos/bodega/web/barista-matcha.jpg" alt="A barista pouring a matcha drink behind the Bodega Market counter" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <section class="tagline"><div class="wrap"><p>Good coffee travels well. We bring the bar, the beans and the people who know how to pour them.</p></div></section>
+
+  <section id="quote">
+    <div class="wrap quote">
+      <div class="quote-copy">
+        <h2>Tell us about your event</h2>
+        <p>Send the details and we will come back with a quote. Nothing is booked or charged until you say yes.</p>
+        <ul>
+          <li><i class="ph ph-calendar-check"></i>No payment to ask for a quote</li>
+          <li><i class="ph ph-receipt"></i>Deposit and balance by emailed invoice</li>
+          <li><i class="ph ph-map-pin"></i>Serving events around San Diego</li>
+        </ul>
+        <!-- DRAFT: replace with the areas you actually cover -->
+        <div class="areas">
+          <h3>Where we set up</h3>
+          <ul><li>Oceanside</li><li>Carlsbad</li><li>Encinitas</li><li>Solana Beach</li><li>Del Mar</li><li>La Jolla</li><li>Pacific Beach</li><li>Ocean Beach</li><li>North Park</li><li>Little Italy</li><li>Downtown</li><li>Coronado</li></ul>
+          <p>Somewhere else in San Diego County? Ask anyway. We are happy to travel.</p>
+        </div>
+      </div>
+      <!-- PLACEHOLDER: replace this whole form with the Flashquotes embed code
+           (Flashquotes: Forms > lead intake form > Share > embed > WordPress or General Embeds) -->
+      <form class="fq" novalidate aria-label="Catering quote request">
+        <label>Your name<input name="name" autocomplete="name" required></label>
+        <label>Email<input name="email" type="email" autocomplete="email" required></label>
+        <label>Phone<input name="phone" type="tel" autocomplete="tel"></label>
+        <label>Event date<input name="date" type="date" required></label>
+        <label>Guest count<input name="guests" type="number" min="1" inputmode="numeric" required></label>
+        <label>Type of event<select name="type"><option>Wedding</option><option>Office or corporate</option><option>Private party</option><option>Market or pop up</option><option>Something else</option></select></label>
+        <fieldset><legend>What would you like?</legend>
+          <label class="chip"><input type="checkbox" name="want" value="coffee" checked>Coffee bar</label>
+          <label class="chip"><input type="checkbox" name="want" value="sandwiches">Sandwiches</label>
+          <label class="chip"><input type="checkbox" name="want" value="juices">Juices</label>
+          <label class="chip"><input type="checkbox" name="want" value="sides">Deli sides</label>
+        </fieldset>
+        <label class="full">Where is it?<input name="place" placeholder="Venue or neighbourhood" required></label>
+        <label class="full">Anything else we should know?<textarea name="notes"></textarea></label>
+        <button class="btn">Request a quote<i class="ph ph-arrow-right"></i></button>
+        <p class="fq-msg" role="status"></p>
+        <p class="fq-note">Form preview only. The live form will be the Flashquotes intake form, styled to match.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- DRAFT: answers are placeholders until the real catering terms are confirmed -->
+  <section id="faq" class="grain">
+    <div class="wrap">
+      <div class="sec-head"><h2>Good to know</h2></div>
+      <div class="faq">
+        <details><summary>How far ahead should I book?<i class="ph ph-plus"></i></summary><p>Two to three weeks ahead is a safe bet, and earlier for weekends in wedding season. Send the form even if the date is close and we will tell you straight away whether we can do it.</p></details>
+        <details><summary>Where do you cater?<i class="ph ph-plus"></i></summary><p>Across San Diego County. Put the venue or neighbourhood in the form and any travel cost will be shown in your quote.</p></details>
+        <details><summary>What do you need at the venue?<i class="ph ph-plus"></i></summary><p>A level spot about 6 by 6 feet, a standard power outlet within reach and a path we can wheel the bar along. Someone to point us to the spot on the day helps too.</p></details>
+        <details><summary>Can you set up outdoors?<i class="ph ph-plus"></i></summary><p>Yes. Beaches, backyards and car parks are all fine as long as the ground is level. If there is no outlet nearby, tell us in the form and we can bring a generator.</p></details>
+        <details><summary>What kinds of events do you cater?<i class="ph ph-plus"></i></summary><p>Weddings, office mornings, private parties, markets and pop ups. If people are gathering and want good coffee, we can probably do it.</p></details>
+        <details><summary>Can you match the menu to our event?<i class="ph ph-plus"></i></summary><p>Yes. We can name drinks for the day, add a seasonal syrup or trim the menu to keep the line moving. Put what you have in mind in the notes.</p></details>
+        <details><summary>Can we have our own branding on the cups?<i class="ph ph-plus"></i></summary><p>Yes, with enough notice. Ask for branded cups or sleeves in the form and we will price them into your quote.</p></details>
+        <details><summary>How do I pay?<i class="ph ph-plus"></i></summary><p>Once you accept the quote we email an invoice for the deposit, then another for the balance before the event. Both can be paid by card online.</p></details>
+        <details><summary>Can you do non dairy and decaf?<i class="ph ph-plus"></i></summary><p>Yes. Oat and almond milk come as standard, and our Mexico Chiapas decaf can be on the bar if you ask for it in the form.</p></details>
+      </div>
+      <p style="margin-top:48px"><a class="btn" href="#quote" style="background:var(--navy);color:var(--cream)">Get a quote<i class="ph ph-arrow-right"></i></a></p>
+    </div>
+  </section>
+</main>
+<script src="base.js?v=18"></script>
+<script src="birds.js?v=18"></script>
+<script>
+  // Step stickers: a scalloped badge behind each number
+  const scallop = `<svg viewBox="-50 -50 100 100" aria-hidden="true"><circle r="39"/>${Array.from({ length: 12 }, (_, i) => `<circle r="11" cx="${(39 * Math.cos(i * Math.PI / 6)).toFixed(2)}" cy="${(39 * Math.sin(i * Math.PI / 6)).toFixed(2)}"/>`).join('')}</svg>`;
+  document.querySelectorAll('.steps b').forEach(b => b.insertAdjacentHTML('afterbegin', scallop));
+  // The skater's position along the line follows how far the section has scrolled through the screen
+  const track = document.querySelector('.track'), rider = track.querySelector('.skater'), how = document.querySelector('#how');
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    let q = false, lastP = 0;
+    const ride = () => {
+      q = false;
+      const top = track.getBoundingClientRect().top;
+      if (top > innerHeight + 200 || top < -600) return;
+      const p = Math.max(0, Math.min(1, (innerHeight * 0.85 - top) / (innerHeight * 0.6)));
+      rider.style.setProperty('--x', (p * (track.clientWidth - rider.offsetWidth)).toFixed(1) + 'px');
+      rider.style.setProperty('--tilt', (Math.max(-6, Math.min(6, (p - lastP) * 400)) + Math.sin(p * 40) * 2).toFixed(2) + 'deg');
+      how.style.setProperty('--turn', (p * 180).toFixed(1));
+      lastP = p;
+    };
+    addEventListener('scroll', () => { if (!q) { q = true; requestAnimationFrame(ride); } }, { passive: true });
+    addEventListener('resize', ride);
+    ride();
+  }
+
+  // Mock validation for the placeholder form. Nothing is sent anywhere.
+  const fq = document.querySelector('.fq'), msg = fq.querySelector('.fq-msg');
+  fq.addEventListener('submit', e => {
+    e.preventDefault();
+    const bad = [...fq.querySelectorAll('[required]')].filter(f => { const no = !f.value.trim() || (f.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.value)); f.setAttribute('aria-invalid', no); return no; });
+    if (bad.length) { msg.textContent = `${bad.length === 1 ? 'One field needs' : bad.length + ' fields need'} a look. Check the ones outlined in red.`; bad[0].focus(); return; }
+    msg.textContent = `Thanks, ${fq.elements.name.value.trim().split(' ')[0]}. Your request is in and a quote is on its way to ${fq.elements.email.value.trim()}.`;
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tidewell Coffee Co. | Small batch coffee from San Diego</title>
+<meta name="description" content="Small batch, 100% arabica coffee roasted in San Diego. Shop Signature Blend, Dreamy Dayz, Costa Sur and Decaf.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%278%27 fill=%27%2334506E%27/%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%277%27 fill=%27%23F6EBD9%27/%3E%3C/svg%3E">
+<link rel="stylesheet" href="base.css?v=18">
+<style>
+  /* Direction A: Costa. Closest to the Valor structure: full bleed colour hero, product row, three tiles. */
+  .hero { background: var(--navy); color: var(--cream); padding: 80px 0 80px; overflow: hidden; }
+  .hero .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+  .hero .surfer { width: 88%; justify-self: center; }
+  .hero-copy { padding-bottom: 0; }
+  .hero h1 { font-size: 72px; line-height: 1; letter-spacing: -0.02em; margin: 16px 0 12px; padding-bottom: 12px; background: linear-gradient(90deg, #FFFFFF, #9B9B9B); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hero .btn { background: var(--cream); color: var(--navy); margin-top: 32px; }
+  .hero .proof { margin-top: 24px; font-size: 14px; line-height: 20px; opacity: 0.72; display: flex; gap: 8px; align-items: center; }
+  .tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .tile { position: relative; aspect-ratio: 4 / 5; border-radius: 16px; overflow: hidden; padding: 32px; display: flex; flex-direction: column; justify-content: space-between; background: var(--tb); color: var(--tc); transition: transform 500ms var(--ease); }
+  .tile:hover { transform: translateY(-4px); } .tile:active { transform: scale(0.98); }
+  .tile h3 { font-size: 36px; line-height: 40px; }
+  .tile .art { width: 100%; transition: transform 500ms var(--ease); }
+  .tile:hover .art { transform: scale(1.04); }
+  .tagline { background: var(--paper); }
+  footer { --foot-bg: var(--navy); }
+  @media (max-width: 900px) {
+    .hero .wrap, .tiles { grid-template-columns: 1fr; }
+    .hero { padding: 48px 0 48px; } .hero-copy { order: -1; }
+    .hero h1 { font-size: 48px; } .hero h1 br { display: none; }
+    .tile { aspect-ratio: 4 / 3; }
+  }
+</style>
+</head>
+<body>
+<main id="main">
+  <section class="hero grain">
+    <div class="wrap">
+      <span class="art surfer" role="img" aria-label="Line drawing of a surfer riding a wave under a sunburst"></span>
+      <div class="hero-copy">
+        <p class="eyebrow">Tidewell Coffee Co. · San Diego, CA</p>
+        <h1>Good coffee for <br>brighter days.</h1>
+        <p class="sub">Small batch, 100% arabica coffee roasted in San Diego. Four bags made for slow mornings and early surf checks.</p>
+        <a class="btn" href="#shop">Shop the beans<i class="ph ph-arrow-right"></i></a>
+        <p class="proof"><i class="ph ph-sun"></i>Every 12 oz bag is stamped with its roast date</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="shop">
+    <div class="wrap">
+      <div class="sec-head reveal"><h2>Fresh off the roaster</h2><a class="link" href="#shop">Shop all coffee<i class="ph ph-arrow-right"></i></a></div>
+      <div class="grid" data-coffees="grid"></div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap tiles">
+      <a class="tile reveal" href="#shop" style="--tb:var(--olive);--tc:var(--cream)"><h3>Buy some beans</h3><span class="art van"></span><span class="link">Whole bean or ground<i class="ph ph-arrow-right"></i></span></a>
+      <a class="tile reveal" href="#menu" id="story" style="--tb:var(--ink);--tc:var(--cream)"><h3>See the cafe menu</h3><span class="art skater"></span><span class="link">Lattes, matcha and more<i class="ph ph-arrow-right"></i></span></a>
+      <a class="tile reveal" href="#visit" id="visit" style="--tb:var(--seafoam);--tc:var(--brown)"><h3>Come say hi</h3><span class="art sun"></span><span class="link">Find us in San Diego<i class="ph ph-arrow-right"></i></span></a>
+    </div>
+  </section>
+
+  <section class="tagline"><div class="wrap"><p>Good coffee. Good people. Brighter days. Roasted in small batches, a few miles from the water.</p></div></section>
+
+  <section id="menu">
+    <div class="wrap">
+      <div class="sec-head reveal"><h2>On the menu at the cafe</h2><a class="link" href="#menu">See the full menu<i class="ph ph-arrow-right"></i></a></div>
+      <div class="menu-cols" data-menu></div>
+    </div>
+  </section>
+</main>
+<script src="base.js?v=18"></script>
+</body>
+</html>

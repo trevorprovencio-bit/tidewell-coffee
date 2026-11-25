@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tidewell Coffee Co. | Small batch coffee from San Diego</title>
+<meta name="description" content="Small batch, 100% arabica coffee roasted in San Diego. Shop Signature Blend, Dreamy Dayz, Costa Sur and Decaf.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%278%27 fill=%27%2334506E%27/%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%277%27 fill=%27%23F6EBD9%27/%3E%3C/svg%3E">
+<link rel="stylesheet" href="base.css?v=18">
+<style>
+  /* Direction C: Signature. Dark, high contrast, the black and cream skater label turned inside out. */
+  :root { --bg: #181818; --surface: #1F1F1F; --text: var(--cream); --muted: rgba(246, 235, 217, 0.64); --line: rgba(246, 235, 217, 0.16);
+    --accent: var(--cream); --on-accent: #181818; --nav-surface: rgba(24, 24, 24, 0.88); --nav-text: var(--cream); --foot-bg: #000000; }
+  .hero { padding: 80px 0 0; overflow: hidden; }
+  .hero .wrap { display: grid; grid-template-columns: 7fr 5fr; gap: 32px; align-items: center; }
+  .hero h1 { font-size: 96px; line-height: 1; letter-spacing: -0.03em; margin: 24px 0 8px; padding-bottom: 16px; background: linear-gradient(90deg, #FFFFFF, #9B9B9B); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hero .sub { color: var(--muted); }
+  .cta { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-top: 32px; }
+  .hero .skater { width: 100%; color: var(--cream); }
+  .notes { margin-top: 80px; padding: 24px 0; box-shadow: inset 0 1px 0 var(--line), inset 0 -1px 0 var(--line); white-space: nowrap; overflow: hidden; }
+  .notes div { display: inline-flex; animation: slide 48s linear infinite; font-size: 60px; line-height: 1; font-weight: 600; letter-spacing: -0.02em; }
+  .notes span { padding: 0 24px; } .notes span:nth-child(even) { color: var(--seafoam); }
+  .bento { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .big { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: center; background: var(--surface); border-radius: 24px; padding: 8px; transition: transform 500ms var(--ease); }
+  .big:hover { transform: translateY(-4px); } .big:active { transform: scale(0.98); }
+  .big-img { background: var(--tint); border-radius: 16px; padding: 32px; }
+  .big-img img { box-shadow: 0 16px 32px rgba(0, 0, 0, 0.4); transition: transform 500ms var(--ease); }
+  .big:hover img { transform: rotate(-2deg) scale(1.03); }
+  .big-copy { padding: 24px 24px 24px 8px; }
+  .big h3 { font-size: 30px; line-height: 36px; margin: 8px 0 12px; }
+  .big .price { display: flex; justify-content: space-between; align-items: center; margin-top: 32px; font-weight: 600; }
+  .big[data-id=signature] .big-img { background: var(--cream); }
+  .visit { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .panel { border-radius: 24px; padding: 48px; min-height: 480px; display: flex; flex-direction: column; justify-content: space-between; }
+  .panel h2 { font-size: 48px; line-height: 1; letter-spacing: -0.02em; }
+  .panel.sea { background: var(--seafoam); color: var(--brown); } .panel.sea .art { width: 100%; }
+  .panel.menu { background: var(--surface); box-shadow: inset 0 0 0 1px var(--line); }
+  .panel .menu-cols { grid-template-columns: 1fr; gap: 0; margin: 32px 0; }
+  .panel .menu-cols > div:not(:first-child) { display: none; }
+  .card { background: var(--surface); }
+  body .tagline { background-image: none !important; }
+  @media (max-width: 900px) {
+    .hero { padding-top: 48px; } .hero .wrap, .bento, .visit, .big { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 48px; } .notes { margin-top: 48px; } .notes div { font-size: 36px; }
+    .big-copy { padding: 8px 16px 24px; } .panel { padding: 24px; min-height: 0; gap: 32px; } .panel h2 { font-size: 36px; line-height: 40px; }
+  }
+</style>
+</head>
+<body>
+<main id="main">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow" style="color:var(--seafoam)">Small batch · San Diego, CA</p>
+        <h1>Roasted small.<br>Poured bright.</h1>
+        <p class="sub">Tidewell is 100% arabica coffee roasted a few pounds at a time in San Diego. Start with the Signature Blend: dark caramel and rich chocolate in a 12 oz bag.</p>
+        <div class="cta"><a class="btn" href="#shop">Shop Signature Blend<i class="ph ph-arrow-right"></i></a><a class="link" href="#shop" style="padding:8px 12px">See all four coffees</a></div>
+      </div>
+      <span class="art skater" role="img" aria-label="Line drawing of a skater pushing past a sunburst"></span>
+    </div>
+    <div class="notes" aria-hidden="true"><div>
+      <span>Dark caramel</span><span>✺</span><span>Rich chocolate</span><span>✺</span><span>Rustic fruit</span><span>✺</span><span>Dark berries</span><span>✺</span><span>Brown sugar</span><span>✺</span><span>Toasted nut</span><span>✺</span>
+      <span>Dark caramel</span><span>✺</span><span>Rich chocolate</span><span>✺</span><span>Rustic fruit</span><span>✺</span><span>Dark berries</span><span>✺</span><span>Brown sugar</span><span>✺</span><span>Toasted nut</span><span>✺</span>
+    </div></div>
+  </section>
+
+  <section id="shop">
+    <div class="wrap">
+      <div class="sec-head reveal"><h2>Four coffees, zero filler</h2><a class="link" href="#shop">Shop all coffee<i class="ph ph-arrow-right"></i></a></div>
+      <div class="bento" id="bento"></div>
+    </div>
+  </section>
+
+  <section class="tagline" id="story" style="padding-top:0"><div class="wrap"><p>Good coffee. Good people. Brighter days. Three things we take seriously so the rest can stay easy.</p></div></section>
+
+  <section id="menu" style="padding-top:0">
+    <div class="wrap visit">
+      <div class="panel sea reveal" id="visit"><h2>Come say hi<br>in San Diego</h2><span class="art sun"></span><a class="link" href="#visit">Hours and directions<i class="ph ph-arrow-right"></i></a></div>
+      <div class="panel menu reveal"><h2>On the bar today</h2><div class="menu-cols" data-menu></div><a class="link" href="#menu">See the full cafe menu<i class="ph ph-arrow-right"></i></a></div>
+    </div>
+  </section>
+</main>
+<script src="base.js?v=18"></script>
+<script>
+  document.getElementById('bento').innerHTML = COFFEES.map(c => `
+    <a class="big reveal" href="#shop" data-id="${c.id}" style="--tint:${c.tint}">
+      <div class="big-img"><img src="assets/label-${c.id}.jpg" alt="${c.name} bag label" loading="lazy"></div>
+      <div class="big-copy"><p class="eyebrow muted">${c.badge} · ${c.origin}</p><h3>${c.name}</h3><p class="muted">${c.notes}.</p>
+        <p class="price">$${c.price}<span class="btn sm">Add to bag</span></p></div>
+    </a>`).join('');
+  document.querySelectorAll('#bento .reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

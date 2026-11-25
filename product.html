@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shop coffee | Tidewell Coffee Co.</title>
+<meta name="description" content="Small batch, 100% arabica coffee from Tidewell Coffee Co. Whole bean or ground to order, in 12 oz bags.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%278%27 fill=%27%2334506E%27/%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%277%27 fill=%27%23F6EBD9%27/%3E%3C/svg%3E">
+<link rel="stylesheet" href="base.css?v=18">
+<style>
+  footer { --foot-bg: var(--navy); }
+  .pdp { padding: 48px 0 96px; }
+  .pdp .wrap { display: grid; grid-template-columns: 5fr 7fr; gap: 64px; align-items: start; }
+  .pdp-img { position: sticky; top: 120px; background: var(--tint); border-radius: 16px; padding: 48px 80px; aspect-ratio: 473 / 619; display: grid; place-items: center; }
+  .pdp-img img { max-height: 100%; width: auto; filter: drop-shadow(0 16px 16px rgba(27, 24, 21, 0.28)); transform: rotate(-2deg); transition: transform 500ms var(--ease); }
+  .pdp-img:hover img { transform: rotate(0deg) scale(1.03); }
+  .crumb { font-size: 14px; line-height: 20px; color: var(--muted); margin-bottom: 24px; } .crumb a { text-decoration: underline; text-underline-offset: 4px; }
+  .pdp h1 { font-size: 72px; line-height: 1; letter-spacing: -0.02em; }
+  .pdp-notes { margin-top: 16px; font-size: 20px; line-height: 28px; max-width: 480px; }
+  .pdp-price { margin-top: 24px; font-size: 30px; line-height: 36px; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .pdp-price span { font-size: 16px; line-height: 24px; font-weight: 400; color: var(--muted); margin-left: 8px; }
+  .pdp dl { display: grid; grid-template-columns: repeat(3, auto); justify-content: start; gap: 40px; margin: 32px 0; padding: 24px 0; border-top: 1.5px solid var(--ink); border-bottom: 1.5px solid var(--ink); }
+  .pdp dt { font-size: 12px; line-height: 16px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
+  .pdp dd { margin: 4px 0 0; font-weight: 600; }
+  .pdp fieldset { border: 0; padding: 0; margin: 0 0 24px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .pdp legend { padding: 0; margin-bottom: 8px; font-weight: 600; }
+  .chip { display: inline-flex; align-items: center; min-height: 48px; padding: 12px 16px; border-radius: 8px; box-shadow: inset 0 0 0 1.5px var(--ink); font-weight: 500; cursor: pointer; transition: background-color 300ms var(--ease), color 300ms var(--ease); }
+  .chip input { position: absolute; opacity: 0; pointer-events: none; }
+  .chip:has(:checked) { background: var(--ink); color: var(--cream); }
+  .chip:has(:focus-visible) { outline: 2px solid var(--navy); outline-offset: 4px; }
+  .buy { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  .buy .qty { margin: 0; } .buy .qty button { width: 48px; height: 48px; }
+  .buy .btn { flex: 1; justify-content: center; min-width: 200px; }
+  .perks { list-style: none; padding: 0; margin: 32px 0 0; display: grid; gap: 12px; }
+  .perks li { display: grid; grid-template-columns: 24px 1fr; gap: 12px; } .perks i { font-size: 24px; color: var(--navy); }
+  #more { background: var(--paper); }
+  @media (max-width: 900px) {
+    .pdp { padding: 24px 0 64px; } .pdp .wrap { grid-template-columns: 1fr; gap: 32px; }
+    .pdp-img { position: static; padding: 32px 64px; aspect-ratio: 327 / 396; } .pdp h1 { font-size: 48px; }
+    .pdp dl { grid-template-columns: 1fr 1fr; gap: 16px 24px; } #more .grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<main id="main">
+  <section class="pdp">
+    <div class="wrap">
+      <div class="pdp-img"><img alt=""></div>
+      <div>
+        <p class="crumb"><a href="index.html#shop">The lineup</a> / <span data-f="name"></span></p>
+        <h1 data-f="name"></h1>
+        <p class="pdp-notes"><span data-f="notes"></span>.</p>
+        <p class="pdp-price">$<span data-f="price" style="all:unset"></span><span>12 oz bag</span></p>
+        <dl><div><dt>Origin</dt><dd data-f="origin"></dd></div><div><dt>Profile</dt><dd data-f="roast"></dd></div><div><dt>Beans</dt><dd>100% arabica</dd></div></dl>
+        <form class="add" novalidate>
+          <!-- DRAFT: confirm which grinds you offer -->
+          <fieldset><legend>Grind</legend>
+            <label class="chip"><input type="radio" name="grind" value="Whole bean" checked>Whole bean</label>
+            <label class="chip"><input type="radio" name="grind" value="Drip grind">Drip</label>
+            <label class="chip"><input type="radio" name="grind" value="Espresso grind">Espresso</label>
+            <label class="chip"><input type="radio" name="grind" value="French press grind">French press</label>
+          </fieldset>
+          <div class="buy">
+            <span class="qty"><button type="button" data-q="-1" aria-label="One fewer"><i class="ph ph-minus"></i></button><output aria-live="polite">1</output><button type="button" data-q="1" aria-label="One more"><i class="ph ph-plus"></i></button></span>
+            <button class="btn">Add to bag<i class="ph ph-arrow-right"></i></button>
+          </div>
+        </form>
+        <ul class="perks">
+          <li><i class="ph ph-fire"></i>Roasted in small batches in San Diego County</li>
+          <li><i class="ph ph-storefront"></i>Also on the shelf in San Marcos and Oceanside</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section id="more" class="grain">
+    <div class="wrap">
+      <div class="sec-head"><h2>More from the lineup</h2><a class="link" href="index.html#shop">See all four<i class="ph ph-arrow-right"></i></a></div>
+      <div class="grid" data-coffees="grid" style="grid-template-columns:repeat(3,1fr)"></div>
+    </div>
+  </section>
+</main>
+<script>
+  // Which coffee this page shows comes from ?c= in the address. The grid below skips it.
+  window.__c = new URLSearchParams(location.search).get('c');
+  document.querySelector('[data-coffees]').dataset.skip = ['signature', 'dreamy', 'costasur', 'decaf'].includes(window.__c) ? window.__c : 'signature';
+</script>
+<script src="base.js?v=18"></script>
+<script src="birds.js?v=18"></script>
+<script>
+  const c = COFFEES.find(x => x.id === window.__c) || COFFEES[0];
+  document.title = `${c.name} coffee, 12 oz | Tidewell Coffee Co.`;
+  document.querySelector('meta[name=description]').content = `${c.name}: ${c.notes.toLowerCase()}. ${c.origin}, ${c.roast.toLowerCase()}. Small batch 12 oz bag from Tidewell Coffee Co.`;
+  $$('[data-f]').forEach(el => { el.textContent = c[el.dataset.f]; });
+  const pic = $('.pdp-img img'); pic.src = `assets/label-${c.id}.jpg`; pic.alt = `${c.name} bag label`;
+  $('.pdp-img').style.setProperty('--tint', c.tint);
+  const out = $('.buy output');
+  $$('.buy [data-q]').forEach(b => b.addEventListener('click', () => { out.textContent = Math.max(1, Math.min(12, +out.textContent + +b.dataset.q)); }));
+  $('.add').addEventListener('submit', e => { e.preventDefault(); bagAdd(c.id, new FormData(e.target).get('grind'), +out.textContent); out.textContent = 1; });
+</script>
+</body>
+</html>

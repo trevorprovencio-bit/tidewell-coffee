@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cafe menu | Tidewell Coffee Co.</title>
+<meta name="description" content="The Tidewell Coffee Co. cafe menu: espresso drinks, specialty lattes, matcha, teas and refreshers, plus whole bean coffee to take home.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Krona+One&family=Poppins:wght@400;500;600;700&family=Yellowtail&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%278%27 fill=%27%2334506E%27/%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%277%27 fill=%27%23F6EBD9%27/%3E%3C/svg%3E">
+<link rel="stylesheet" href="base.css?v=18">
+<style>
+  /* Cafe menu, one ink on paper: giant wide MENU with a script overlay, checkerboard edges,
+     heavy rules under section titles, hairline rules between items, the van as the illustration. */
+  :root { --bg: #F4F0E6; --paper: #F4F0E6; --blue: var(--navy); --text: var(--navy); --line: rgba(52, 80, 110, 0.4); --foot-bg: var(--navy);
+    --check: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48'%3E%3Cpath fill='%2334506E' d='M0 0h24v24H0zM24 24h24v24H24z'/%3E%3C/svg%3E"); }
+  body { color: var(--blue); }
+  .wide { font-family: "Krona One", Poppins, sans-serif; font-weight: 400; }
+
+  .sheet { position: relative; padding: 72px max(144px, calc((100% - 976px) / 2)) 96px; }
+  .sheet::before, .sheet::after { content: ""; position: absolute; width: 48px; background: var(--check) 0 calc(var(--p, 0) * 96px) / 48px 48px; }
+  .sheet::before { left: 0; top: 0; height: 58%; }
+  .sheet::after { right: 0; bottom: 0; height: 58%; }
+
+  .sheet section { padding: 0; }
+  .head { position: relative; padding-left: 4%; }
+  .head h1 { position: relative; margin: 0; }
+  .head h1 svg { display: block; width: 100%; height: auto; overflow: visible; fill: var(--blue); stroke: var(--blue); stroke-width: 14; stroke-linejoin: round; }
+  .script { position: absolute; left: -5%; bottom: -14%; z-index: 1; font-family: Yellowtail, cursive; font-weight: 400; font-size: clamp(64px, 11.5vw, 144px); line-height: 1; transform: translateY(calc(var(--p, 0) * -32px)) rotate(-8deg); -webkit-text-stroke: 10px var(--paper); paint-order: stroke fill; }
+  .strap { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-top: 72px; padding: 12px 0; border-top: 3px solid var(--blue); border-bottom: 3px solid var(--blue); }
+  .strap p { font-size: 24px; line-height: 32px; text-transform: uppercase; letter-spacing: -0.01em; }
+  .strap .burst { width: 40px; height: 40px; flex: none; transform: rotate(calc(var(--p, 0) * 120deg)); }
+  .hours { margin-top: 12px; font-size: 14px; line-height: 20px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; }
+
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 48px 64px; margin-top: 64px; align-items: start; }
+  .col { display: grid; gap: 56px; }
+  .sheet h2 { font-size: 36px; line-height: 40px; letter-spacing: -0.02em; padding-bottom: 16px; margin-bottom: 20px; border-bottom: 5px solid var(--blue); }
+  .items { list-style: none; padding: 0; display: grid; gap: 20px; }
+  .items li { display: grid; grid-template-columns: 1fr auto; column-gap: 16px; align-items: baseline; }
+  .items .n { font-size: 18px; line-height: 28px; font-weight: 700; text-transform: uppercase; }
+  .items b { font-size: 18px; line-height: 28px; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .items small { grid-column: 1 / -1; font-size: 16px; line-height: 24px; }
+  .items.ruled { gap: 0; }
+  .items.ruled li { padding: 12px 0; border-bottom: 1.5px solid var(--blue); }
+  .items.ruled li:first-child { padding-top: 0; }
+  .aside { margin-top: 20px; font-size: 16px; line-height: 24px; font-weight: 600; }
+  .sheet .van { width: 100%; color: var(--blue); transform: translateY(calc(var(--p, 0) * 48px)); }
+
+  .beans { margin-top: 72px; }
+  .beans .items { grid-template-columns: repeat(3, 1fr); gap: 16px 48px; }
+  .beans-foot { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-top: 32px; }
+  .beans-foot p { font-family: Yellowtail, cursive; font-size: 36px; line-height: 40px; transform: rotate(-3deg); }
+  .beans .btn { background: var(--blue); color: var(--paper); }
+  [data-px] { will-change: transform; }
+
+  @media (max-width: 900px) {
+    .sheet { padding: 40px 48px 64px; }
+    .sheet::before, .sheet::after { width: 24px; background-size: 24px 24px; }
+    .script { font-size: 48px; -webkit-text-stroke-width: 5px; left: -4%; bottom: -34%; }
+    .strap { margin-top: 48px; } .strap p { font-size: 14px; line-height: 20px; } .strap .burst { width: 24px; height: 24px; }
+    .cols { grid-template-columns: 1fr; margin-top: 40px; } .col { gap: 40px; }
+    .sheet h2 { font-size: 24px; line-height: 32px; padding-bottom: 12px; border-bottom-width: 4px; }
+    .beans { margin-top: 48px; } .beans .items { grid-template-columns: 1fr; }
+    .beans-foot p { font-size: 30px; line-height: 36px; }
+  }
+  @media (prefers-reduced-motion: reduce) { [data-px], .sheet { --p: 0 !important; } }
+</style>
+</head>
+<body>
+<main id="main" class="sheet">
+  <header class="head">
+    <h1 aria-label="Coffee menu">
+      <svg viewBox="0 0 1000 196" aria-hidden="true"><text class="wide" x="0" y="192" font-size="268" textLength="1000" lengthAdjust="spacingAndGlyphs">MENU</text></svg>
+      <span class="script" data-px aria-hidden="true">Coffee</span>
+    </h1>
+    <div class="strap">
+      <p class="wide">Good coffee · Good people · Brighter days</p>
+      <span data-burst data-px></span>
+    </div>
+    <p class="hours">Poured in San Marcos and Oceanside · <a href="visit.html" style="text-decoration:underline;text-underline-offset:4px">Hours and directions</a></p>
+  </header>
+
+  <div class="cols">
+    <div class="col">
+      <section aria-label="Coffees">
+        <h2 class="wide">The coffees</h2>
+        <ul class="items" data-list="coffees"></ul>
+      </section>
+      <section aria-label="Matcha">
+        <h2 class="wide">Matcha</h2>
+        <ul class="items" data-list="matcha"></ul>
+      </section>
+      <span class="art van" data-px role="img" aria-label="Line drawing of a surf van parked by the ocean under a sunburst"></span>
+    </div>
+    <div class="col">
+      <section aria-label="Specialty lattes">
+        <h2 class="wide">Specialty lattes</h2>
+        <ul class="items" data-list="lattes"></ul>
+        <p class="aside">Add cold foam to any drink +1.25</p>
+      </section>
+      <section aria-label="Teas and refreshers">
+        <h2 class="wide">Teas and refreshers</h2>
+        <ul class="items ruled" data-list="refreshers"></ul>
+      </section>
+      <section aria-label="Add ons">
+        <h2 class="wide">Add ons</h2>
+        <ul class="items ruled" data-list="addons"></ul>
+      </section>
+    </div>
+  </div>
+
+  <section class="beans" aria-label="Whole bean coffee">
+    <h2 class="wide">Whole bean coffee</h2>
+    <ul class="items" data-list="beans"></ul>
+    <div class="beans-foot">
+      <p>Ask us about our seasonal blend!</p>
+      <a class="btn" href="index.html#shop">Shop the beans<i class="ph ph-arrow-right"></i></a>
+    </div>
+  </section>
+</main>
+<script src="base.js?v=18"></script>
+<script src="birds.js?v=18"></script>
+<script>
+  // Items, prices and notes are transcribed from the printed cafe menu.
+  const LISTS = {
+    coffees: [['Espresso', '4.50'], ['Cappuccino', '5.00'], ['Americano', '5.00'], ['Cold brew', '5.50'], ['Macchiato', '4.75'], ['Flat white', '5.00'], ['Latte', '6.00'], ['Cortado', '5.00']],
+    addons: [['Extra shot', '1.00'], ['Oat milk', '1.00'], ['Almond milk', '1.00']],
+    lattes: [['Honey cinnamon latte', '6.25'], ['Vanilla cardamom latte', '6.25'], ['Sea salt maple latte', '6.25'], ['Blue agave cinnamon latte', '6.50'], ['Lavender latte', '6.25'], ['Mocha', '6.25'], ['Caramel latte', '6.25']],
+    matcha: [['Matcha latte', '8.00', 'Premium first flush matcha.'], ['Lavender matcha', '8.25'], ['Vanilla matcha', '8.25'], ['Maple cinnamon matcha', '8.25']],
+    refreshers: [['Coastal lemonade', '5.50'], ['Lavender bloom lemonade', '5.50'], ['Strawberry dragon fruit lemonade', '5.50'], ['Chai latte', '6.50'], ['London fog', '6.25'], ['Loose leaf teas', '5.00', 'Earl grey, hibiscus and green tea.']],
+    beans: [['Dreamy Dayz', '22.00', 'Honduras blend.'], ['Signature Blend', '22.00', 'Costa Rica.'], ['Decaf', '22.00', 'Mexico Chiapas.']],
+  };
+  document.querySelectorAll('[data-list]').forEach(ul => {
+    ul.innerHTML = LISTS[ul.dataset.list].map(([n, p, d]) => `<li><span class="n">${n}</span><b>${p}</b>${d ? `<small>${d}</small>` : ''}</li>`).join('');
+  });
+  document.querySelector('[data-burst]').innerHTML = SUN;
+
+  // Parallax: the script, the sunburst, the van and the checkerboard edges each read --p,
+  // their distance from the viewport centre, from -1 to 1
+  const sheet = document.querySelector('.sheet');
+  const px = [...document.querySelectorAll('[data-px]')];
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    let q = false;
+    const paint = () => {
+      q = false;
+      sheet.style.setProperty('--p', (scrollY / Math.max(1, document.documentElement.scrollHeight - innerHeight)).toFixed(3));
+      px.forEach(el => {
+        const b = el.parentElement.getBoundingClientRect();
+        if (b.bottom < -300 || b.top > innerHeight + 300) return;
+        const p = (innerHeight / 2 - (b.top + b.height / 2)) / innerHeight;
+        el.style.setProperty('--p', Math.max(-1, Math.min(1, p)).toFixed(3));
+      });
+    };
+    addEventListener('scroll', () => { if (!q) { q = true; requestAnimationFrame(paint); } }, { passive: true });
+    addEventListener('resize', paint);
+    paint();
+  }
+</script>
+</body>
+</html>

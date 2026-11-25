@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tidewell Coffee Co. | Small batch coffee from San Diego</title>
+<meta name="description" content="Small batch, 100% arabica coffee roasted in San Diego. Shop Signature Blend, Dreamy Dayz, Costa Sur and Decaf.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%278%27 fill=%27%2334506E%27/%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%277%27 fill=%27%23F6EBD9%27/%3E%3C/svg%3E">
+<link rel="stylesheet" href="base.css?v=18">
+<style>
+  /* Direction B: Dreamy. The homepage as a bag label: framed hero, ruled rows, one coffee per screen. */
+  :root { --bg: var(--sand); --accent: var(--olive); }
+  .hero { padding: 48px 0 64px; }
+  .label { border: 1.5px solid var(--ink); padding: 48px 48px 0; text-align: center; position: relative; }
+  .label .logo { width: min(100%, 640px); margin: 0 auto; }
+  .stamp { position: absolute; left: 48px; top: 48px; width: 96px; height: 64px; border: 1.5px solid var(--ink); border-radius: 9999px; display: grid; place-items: center; font-size: 12px; line-height: 16px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+  .hero .van-img { width: min(100%, 640px); margin: 32px auto 0; }
+  .hero h1 { font-size: 60px; line-height: 1; letter-spacing: -0.02em; color: var(--olive); margin: 16px auto 16px; }
+  .hero .sub { margin: 0 auto 24px; }
+  .rule { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1.5px solid var(--ink); margin: 48px -48px 0; }
+  .rule span { padding: 16px; font-size: 12px; line-height: 16px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; }
+  .rule span + span { box-shadow: -1.5px 0 0 var(--ink); }
+  .tagline { background: var(--olive); color: var(--cream); }
+  .row { display: grid; grid-template-columns: 5fr 7fr; gap: 64px; align-items: center; padding: 48px 0; border-top: 1.5px solid var(--ink); }
+  .row:nth-child(even) { grid-template-columns: 7fr 5fr; } .row:nth-child(even) .row-img { order: 2; }
+  .row-img { background: var(--tint); padding: 48px 80px; border-radius: 16px; }
+  .row-img img { box-shadow: 0 16px 32px rgba(27, 24, 21, 0.28); transition: transform 500ms var(--ease); }
+  .row h3 { font-size: 60px; line-height: 1; letter-spacing: -0.02em; margin: 0 0 16px; }
+  .row-notes { font-size: 20px; line-height: 28px; max-width: 480px; }
+  .row dl { display: grid; grid-template-columns: repeat(3, auto); justify-content: start; gap: 40px; margin: 32px 0; }
+  .row dt { font-size: 12px; line-height: 16px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
+  .row dd { margin: 4px 0 0; font-weight: 600; }
+  #menu { background: var(--paper); }
+  @media (max-width: 900px) {
+    .hero { padding-top: 24px; } .label { padding: 32px 16px 0; } .stamp { display: none; }
+    .hero h1 { font-size: 36px; line-height: 40px; }
+    .rule { margin: 32px -16px 0; grid-template-columns: 1fr; } .rule span + span { box-shadow: 0 -1.5px 0 var(--ink); }
+    .row { grid-template-columns: 1fr; gap: 24px; } .row:nth-child(even) { grid-template-columns: 1fr; } .row:nth-child(even) .row-img { order: 0; }
+    .row-img { padding: 32px 64px; } .row h3 { font-size: 36px; line-height: 40px; } .row dl { grid-template-columns: 1fr 1fr; gap: 16px 24px; margin: 24px 0; }
+  }
+</style>
+</head>
+<body>
+<main id="main">
+  <section class="hero">
+    <div class="wrap">
+      <div class="label">
+        <span class="art logo" role="img" aria-label="Tidewell Coffee Co."></span>
+        <span class="stamp" aria-hidden="true">100%<br>arabica</span>
+        <img class="van-img" src="assets/van.png" alt="Illustration of a green surf van parked by the ocean under a sunburst">
+        <h1>Slow mornings,<br>small batches.</h1>
+        <p class="sub">Coffee roasted in San Diego for the unhurried part of the day. Pick a bag, tell us whole bean or ground, and we will handle the rest.</p>
+        <a class="btn" href="#shop">Shop the beans<i class="ph ph-arrow-right"></i></a>
+        <div class="rule"><span>Small batch</span><span>San Diego, CA</span><span>Net wt. 12 oz</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tagline" id="story"><div class="wrap"><p>Good coffee. Good people. Brighter days. That is the whole recipe, and we roast it a few pounds at a time.</p></div></section>
+
+  <section id="shop">
+    <div class="wrap">
+      <div class="sec-head reveal"><h2>The lineup</h2><p class="muted">Four coffees. All 100% arabica, all $22.</p></div>
+      <div data-coffees="rows"></div>
+    </div>
+  </section>
+
+  <section id="menu" class="grain">
+    <div class="wrap">
+      <div class="sec-head reveal" id="visit"><h2>Or let us make it for you</h2><a class="link" href="#menu">See the full cafe menu<i class="ph ph-arrow-right"></i></a></div>
+      <div class="menu-cols" data-menu></div>
+    </div>
+  </section>
+</main>
+<script src="base.js?v=18"></script>
+</body>
+</html>
