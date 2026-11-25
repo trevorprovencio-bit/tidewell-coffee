@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%278%27 fill=%27%2334506E%27/%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%277%27 fill=%27%23F6EBD9%27/%3E%3C/svg%3E">
-<link rel="stylesheet" href="base.css?v=24">
+<link rel="stylesheet" href="base.css?v=25">
 <style>
   /* Catering: same navy hero as the homepage with the van as the picture, three steps,
      three services, then the quote form. One action on the page: ask for a quote. */
@@ -57,12 +57,15 @@
   .pack li i { font-size: 20px; line-height: 24px; }
   .pack .foot { margin-top: auto; padding-top: 16px; font-weight: 600; }
 
-  .incl { margin-top: 24px; border: 1.5px solid var(--ink); border-radius: 16px; padding: 32px; display: grid; grid-template-columns: 1fr 2fr; gap: 24px 48px; align-items: start; }
+  .incl { margin-top: 24px; border: 1.5px solid var(--ink); border-radius: 16px; padding: 32px; }
+  .incl-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px 32px; flex-wrap: wrap; }
   .incl h3 { font-size: 24px; line-height: 32px; }
-  .incl p { margin-top: 8px; color: var(--muted); }
-  .incl ul { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 12px 32px; }
-  .incl li { display: grid; grid-template-columns: 24px 1fr; gap: 12px; font-weight: 600; }
-  .incl li i { font-size: 24px; color: var(--navy); }
+  .incl-head p { color: var(--muted); }
+  .incl ul { list-style: none; padding: 0; margin: 24px 0 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .incl li { display: grid; grid-template-columns: 48px 1fr; gap: 16px; align-items: center; padding: 16px; border-radius: 12px; background: var(--cream); }
+  .incl li i { width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; font-size: 24px; color: var(--navy); background: var(--seafoam); }
+  .incl li b { display: block; font-size: 18px; line-height: 28px; font-weight: 600; }
+  .incl li span { display: block; font-size: 14px; line-height: 20px; color: var(--muted); }
   .food { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px 64px; align-items: start; }
   .food img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 16px; margin-bottom: 24px; }
   .bgrid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; margin-top: 64px; }
@@ -119,7 +122,7 @@
 
   @media (max-width: 900px) {
     .hero { padding: 48px 0; } .hero .wrap, .steps, .packs, .quote, .food, .incl, .incl ul { grid-template-columns: 1fr; }
-    .incl { padding: 24px; } .areas { margin-top: 32px; }
+    .incl { padding: 24px; } .incl li { padding: 12px; } .areas { margin-top: 32px; }
     .hero-copy { order: -1; } .hero-photo { width: 84%; }
     .bgrid { grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 48px; }
     .shots { grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 48px; } .shots figure:nth-child(even) { margin-top: 32px; } .hero h1 { font-size: 48px; } .hero h1 br { display: none; }
@@ -187,14 +190,14 @@
       </div>
       <!-- DRAFT: confirm this list against what a real quote covers -->
       <div class="incl reveal">
-        <div><h3>Every coffee bar quote includes</h3><p>One price for the lot, with no extras added on the day.</p></div>
+        <div class="incl-head"><h3>Every coffee bar quote includes</h3><p>One price for the lot, with no extras added on the day.</p></div>
         <ul>
-          <li><i class="ph ph-users"></i>Baristas for the whole service</li>
-          <li><i class="ph ph-coffee"></i>Espresso machine, grinders and bar</li>
-          <li><i class="ph ph-drop"></i>Whole, oat and almond milk</li>
-          <li><i class="ph ph-flask"></i>House made syrups</li>
-          <li><i class="ph ph-stack"></i>Cups, lids and napkins</li>
-          <li><i class="ph ph-van"></i>Travel, setup and pack down</li>
+          <li><i class="ph ph-users"></i><div><b>Baristas</b><span>Pouring for the whole service</span></div></li>
+          <li><i class="ph ph-coffee"></i><div><b>Espresso bar</b><span>Machine, grinders and bar</span></div></li>
+          <li><i class="ph ph-drop"></i><div><b>Milk</b><span>Whole, oat and almond</span></div></li>
+          <li><i class="ph ph-flask"></i><div><b>Syrups</b><span>Made in house</span></div></li>
+          <li><i class="ph ph-stack"></i><div><b>Cups</b><span>Lids and napkins too</span></div></li>
+          <li><i class="ph ph-van"></i><div><b>Travel</b><span>Setup and pack down included</span></div></li>
         </ul>
       </div>
     </div>
@@ -320,8 +323,8 @@
     </div>
   </section>
 </main>
-<script src="base.js?v=24"></script>
-<script src="birds.js?v=24"></script>
+<script src="base.js?v=25"></script>
+<script src="birds.js?v=25"></script>
 <script>
   // Step stickers: a scalloped badge behind each number
   const scallop = `<svg viewBox="-50 -50 100 100" aria-hidden="true"><circle r="39"/>${Array.from({ length: 12 }, (_, i) => `<circle r="11" cx="${(39 * Math.cos(i * Math.PI / 6)).toFixed(2)}" cy="${(39 * Math.sin(i * Math.PI / 6)).toFixed(2)}"/>`).join('')}</svg>`;

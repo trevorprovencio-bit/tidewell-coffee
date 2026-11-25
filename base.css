@@ -313,3 +313,6 @@ footer { position: relative; }
 .nav-right { order: 3; justify-self: end; display: flex; align-items: center; gap: 24px; }
 @media (max-width: 900px) { .nav { grid-template-columns: 1fr auto; } .nav-right { gap: 8px; } }
 .nav-right .nav-links { order: 0; }
+
+/* Select boxes: the browser's arrow hugs the edge, so draw our own with room around it */
+form.fq select, form.cform select { appearance: none; -webkit-appearance: none; padding-right: 48px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%231B1815' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 6l5 5 5-5'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; background-size: 16px 16px; cursor: pointer; }
