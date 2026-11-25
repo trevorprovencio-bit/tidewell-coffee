@@ -41,15 +41,20 @@ const VISIT_DROP = `<div class="has-drop"><a class="drop-trigger" href="visit.ht
       <div class="drop-copy"><h3>${l.name}</h3><p>${l.place}</p>
         <p class="drop-acts"><a class="btn" href="${l.page}">Read more</a><a class="btn" href="${l.map}" target="_blank" rel="noopener">Directions</a></p></div>
     </div>`).join('')}</div></div></div>`;
+// The nav links sit in two groups: shopping on the left of the logo, visiting on the right
+const navGroup = list => list.map(([t, h]) => t === 'Visit' ? VISIT_DROP : `<a href="${h}"${h === PAGE ? ' aria-current="page"' : ''}>${t}</a>`).join('');
 const tick = TICKER.map(t => `<span>${t}</span><span aria-hidden="true">${SUN}</span>`).join('');
 document.body.insertAdjacentHTML('afterbegin', `
   <a class="skip" href="#main">Skip to content</a>
   <div class="ticker"><div class="ticker-track">${tick}${tick}</div></div>
   <header class="nav">
     <a href="${HOME || '#main'}" aria-label="Tidewell Coffee Co. home"><span class="art logo"></span></a>
-    <nav class="nav-links" aria-label="Main">${LINKS.map(([t, h]) => t === 'Visit' ? VISIT_DROP : `<a href="${h}"${h === PAGE ? ' aria-current="page"' : ''}>${t}</a>`).join('')}</nav>
-    <button class="btn sm bag-btn" aria-haspopup="dialog" aria-controls="bag">Bag<span class="bag-count" aria-hidden="true">0</span></button>
-    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+    <nav class="nav-links" aria-label="Shop and menu">${navGroup(LINKS.slice(0, 3))}</nav>
+    <div class="nav-right">
+      <nav class="nav-links" aria-label="Visit and contact">${navGroup(LINKS.slice(3))}</nav>
+      <button class="btn sm bag-btn" aria-haspopup="dialog" aria-controls="bag">Bag<span class="bag-count" aria-hidden="true">0</span></button>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+    </div>
   </header>
   <div class="menu-panel">${LINKS.map(([t, h], i) => `<a href="${h}" style="--i:${i}">${t}</a>${t === 'Visit' ? LOCATIONS.map(l => `<a class="sub" href="${l.page}" style="--i:${i}">${l.name}</a>`).join('') : ''}`).join('')}</div>
   <div class="bag-scrim"></div>

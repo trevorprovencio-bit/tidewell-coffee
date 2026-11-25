@@ -308,3 +308,8 @@ footer { position: relative; }
 .lp-cols .note { display: inline-block; margin-top: 16px; padding: 8px 12px; border-radius: 8px; box-shadow: inset 0 0 0 1.5px rgba(246, 235, 217, 0.44); font-size: 14px; line-height: 20px; font-weight: 500; }
 .lp-art { width: 88%; margin: 40px auto 0; color: var(--cream); }
 @media (max-width: 900px) { .lp-list .sec-head h2 { font-size: 36px; line-height: 40px; } .lp-art { width: 64%; margin-top: 32px; } }
+
+/* Nav in two groups: shop links left of the logo, visit links and the bag on the right */
+.nav-right { order: 3; justify-self: end; display: flex; align-items: center; gap: 24px; }
+@media (max-width: 900px) { .nav { grid-template-columns: 1fr auto; } .nav-right { gap: 8px; } }
+.nav-right .nav-links { order: 0; }
