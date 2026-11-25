@@ -82,7 +82,7 @@ The comparison table lists ecommerce features as not available on Premium and in
 | Flashquotes | Free plan, or Plus $49, Pro $99, Scale $199 a month billed annually; 14-day trial | [Flashquotes pricing](https://flashquotes.com/pricing) |
 | Catering invoices (Square) | 2.9% + 30¢ per paid invoice on Square Plus or Premium, 3.3% + 30¢ on Square Free | [Square fees](https://squareup.com/help/us/en/article/5068) |
 | Flashquotes payments | Not used. Its 3% platform fee and Stripe processing only apply to payments taken in Flashquotes | [Flashquotes pricing](https://flashquotes.com/pricing) |
-| Domain | tidewellcoffee.com is already registered; owner not confirmed (see open questions) | Hostinger availability check, Nov 25 |
+| Domain | tidewellcoffee.com is Tidewell's; a transfer to Hostinger normally includes a year's renewal at its .com price, not checked yet | Trevor, Nov 25 |
 
 Nothing here has been bought or signed up for.
 
@@ -121,6 +121,13 @@ Worth checking while that lands: the sample menu lists the whole bean coffees as
 - Trevor answers the open questions below.
 
 ### Phase 1: set up the foundations
+- **Trevor: move tidewellcoffee.com to Hostinger.** The domain is Tidewell's and currently sits in another account at its current registrar. A transfer needs:
+  - the domain unlocked at the current registrar, and privacy protection off if it blocks the transfer;
+  - the transfer authorisation (EPP) code from the current registrar, entered when starting the transfer in Hostinger;
+  - the registrant email reachable, since the approval mail goes there;
+  - a copy of the existing DNS records first (MX and TXT for email, any verification records), so email and anything else on the domain keeps working once Hostinger's nameservers take over;
+  - the domain not registered or transferred in the last 60 days, which blocks a transfer.
+  Transfers usually take a few days. The site can launch on the domain before it finishes by pointing DNS at Hostinger.
 - Hosting plan and a WordPress install on a staging address.
 - A Square sandbox app for testing, then Tidewell's own Square account (separate from Bodega's).
 - Set up the coffees in Square with grind variations, SKUs, prices, images and stock.
@@ -140,16 +147,15 @@ Worth checking while that lands: the sample menu lists the whole bean coffees as
 - Run one test end to end: form, quote, accepted quote, Square deposit invoice, Square balance invoice.
 
 ### Phase 5: launch
-- Point the domain (tidewellcoffee.com, once its owner is confirmed) at Hostinger, install SSL, redirect the old GitHub Pages addresses.
+- Point tidewellcoffee.com at the WordPress site, install SSL, redirect the old GitHub Pages addresses.
 - One real order with a real card, refunded.
 - Update privacy and terms for online sales, then switch GitHub Pages off.
 
 ## Open questions for Trevor
 
-1. **Domain:** who holds tidewellcoffee.com, and where? It's registered (a Hostinger availability check on Nov 25 showed it taken), but it isn't in Trevor's Hostinger account. If a partner or another registrar holds it, launch needs its DNS pointed at Hostinger, or the domain moved into Trevor's account.
-2. **What sells online at launch:** just the coffee bags, or also merch, gift cards or subscriptions?
-3. **Shipping or pickup:** ship bags, offer pickup at Bodega and the cart, or both?
-4. **Hosting:** use an existing Hostinger plan, or start a new one for Tidewell?
+1. **What sells online at launch:** just the coffee bags, or also merch, gift cards or subscriptions?
+2. **Shipping or pickup:** ship bags, offer pickup at Bodega and the cart, or both?
+3. **Hosting:** use an existing Hostinger plan, or start a new one for Tidewell?
 
 ## Suggestions (for Trevor to pick from, not decisions)
 
