@@ -146,7 +146,7 @@ Worth checking while that lands: the sample menu lists the whole bean coffees as
 
 ## Open questions for Trevor
 
-1. **Domain:** who holds tidewellcoffee.com, and where? It's registered (a Hostinger availability check on Nov 25 showed it taken), but it isn't in Trevor's Hostinger account and his Gmail has no registrar mail for it. If a partner or another registrar holds it, launch needs its DNS pointed at Hostinger, or the domain moved into Trevor's account.
+1. **Domain:** who holds tidewellcoffee.com, and where? It's registered (a Hostinger availability check on Nov 25 showed it taken), but it isn't in Trevor's Hostinger account. If a partner or another registrar holds it, launch needs its DNS pointed at Hostinger, or the domain moved into Trevor's account.
 2. **What sells online at launch:** just the coffee bags, or also merch, gift cards or subscriptions?
 3. **Shipping or pickup:** ship bags, offer pickup at Bodega and the cart, or both?
 4. **Hosting:** use an existing Hostinger plan, or start a new one for Tidewell?
