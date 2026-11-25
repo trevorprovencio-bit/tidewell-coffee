@@ -98,7 +98,7 @@ Plan:
 
 ## Menu page
 
-A separate pull request is reworking `menu.html` toward Ephraim's sample menu: two columns, dotted leaders, and the full drink list with matcha, specialty lattes, teas and refreshers, add-ons and whole bean coffee. This plan doesn't touch that file.
+Pull request #1 is reworking `menu.html` toward Ephraim's sample menu: two columns, dotted leaders, and the full drink list with matcha, specialty lattes, teas and refreshers, add-ons and whole bean coffee. This plan doesn't touch that file.
 
 Once it merges, the menu becomes a WordPress page template with the same markup. The cafe menu is for drinks made at the cart and in the shop, so it stays content on the site and isn't sold through WooCommerce. The whole bean section can link each coffee to its shop page.
 
@@ -108,7 +108,7 @@ Worth checking while that lands: the sample menu lists the whole bean coffees as
 
 ### Phase 0: fix and decide (this week)
 - Re-run the failed GitHub Pages deploy so the split nav goes live.
-- Merge the menu page pull request once it's reviewed.
+- Merge the menu page pull request (#1) once it's reviewed.
 - Trevor answers the open questions below.
 
 ### Phase 1: set up the foundations
