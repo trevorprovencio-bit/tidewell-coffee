@@ -293,3 +293,18 @@ footer { position: relative; }
   .lp-cols, .lp-next .wrap { grid-template-columns: 1fr; gap: 32px; } .lp-next h2 { font-size: 36px; line-height: 40px; }
 }
 @media (prefers-reduced-motion: reduce) { .drop, .drop-open .drop { transition: none; transform: none; } }
+
+/* Location menu board: navy panel, dotted leaders to the prices, line art filling the short column */
+.lp-list { background: var(--navy); color: var(--cream); }
+.lp-list .sec-head h2 { font-size: 48px; line-height: 1; letter-spacing: -0.02em; }
+.lp-cols h3 { display: flex; align-items: center; gap: 12px; border-bottom: 1.5px solid currentColor; }
+.lp-cols h3 .burst { width: 20px; height: 20px; flex: none; }
+.lp-cols li { display: grid; grid-template-columns: auto 1fr auto; align-items: baseline; gap: 8px; padding: 12px 0; border-bottom: 0; }
+.lp-cols li .n { display: block; font-size: 16px; line-height: 24px; font-weight: 600; color: inherit; max-width: 320px; }
+.lp-cols li small { display: block; font-size: 14px; line-height: 20px; font-weight: 400; opacity: 0.76; }
+.lp-cols li .dots { align-self: start; height: 16px; border-bottom: 2px dotted rgba(246, 235, 217, 0.44); }
+.lp-cols li b { display: block; font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.lp-cols li:not(:has(b)) { grid-template-columns: 1fr; }
+.lp-cols .note { display: inline-block; margin-top: 16px; padding: 8px 12px; border-radius: 8px; box-shadow: inset 0 0 0 1.5px rgba(246, 235, 217, 0.44); font-size: 14px; line-height: 20px; font-weight: 500; }
+.lp-art { width: 88%; margin: 40px auto 0; color: var(--cream); }
+@media (max-width: 900px) { .lp-list .sec-head h2 { font-size: 36px; line-height: 40px; } .lp-art { width: 64%; margin-top: 32px; } }
