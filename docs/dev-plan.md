@@ -6,7 +6,7 @@ Draft for Trevor's review, Nov 25, 2026. Nothing in here is built yet. Prices we
 
 - **Store:** WooCommerce runs the shop (bags of coffee now, more later). That means WordPress, so the site moves off GitHub Pages to a PHP host. Hostinger is the suggested pick, since Trevor already uses it.
 - **Payments and stock:** the official WooCommerce Square plugin takes card, Apple Pay and Google Pay payments into Square, and keeps products, prices and stock in sync. Square is the system of record, so the bags on the Bodega shelf and the bags sold online come out of one count.
-- **Catering:** the catering page keeps its design, and the placeholder quote form is swapped for the Flashquotes intake form.
+- **Catering:** the catering page keeps its design, and the placeholder quote form is swapped for the Flashquotes intake form. Flashquotes only captures leads and builds quotes; every deposit, invoice and payment goes through Square (Trevor's call, Nov 25).
 - **Menu:** the menu page rework toward Ephraim's sample menu is happening separately, in its own pull request. This plan only plans around it.
 
 ## Where the site is today
@@ -33,7 +33,10 @@ WordPress + WooCommerce on Hostinger
   menu, catering, visit, location and story pages
         │  Flashquotes embed on the catering page
         ▼
-Flashquotes (catering leads, quotes, deposits, invoices)
+Flashquotes (catering leads and quotes only, no payments)
+        │  accepted quote
+        ▼
+Square Invoices (deposit, then balance)
 ```
 
 ### Why one WordPress site rather than a static site plus a separate shop
@@ -76,7 +79,8 @@ The comparison table lists ecommerce features as not available on Premium and in
 | Hosting | From $2.79/mo intro on Unlimited, $16.99/mo on renewal | [Hostinger pricing](https://www.hostinger.com/pricing) |
 | Square online payments | 2.9% + 30¢ per online API payment (all plans); extra 1.5% on international cards | [Square fees](https://squareup.com/help/us/en/article/5068) |
 | Flashquotes | Free plan, or Plus $49, Pro $99, Scale $199 a month billed annually; 14-day trial | [Flashquotes pricing](https://flashquotes.com/pricing) |
-| Flashquotes payments | 2.9% + 30¢ card processing (via Stripe), plus a 3% platform fee on online payments that Tidewell can absorb or pass to the client | [Flashquotes pricing](https://flashquotes.com/pricing) |
+| Catering invoices (Square) | 2.9% + 30¢ per paid invoice on Square Plus or Premium, 3.3% + 30¢ on Square Free | [Square fees](https://squareup.com/help/us/en/article/5068) |
+| Flashquotes payments | Not used. Its 3% platform fee and Stripe processing only apply to payments taken in Flashquotes | [Flashquotes pricing](https://flashquotes.com/pricing) |
 | Domain | Not priced yet; depends on whether Tidewell already owns one | |
 
 Nothing here has been bought or signed up for.
@@ -87,14 +91,18 @@ Nothing here has been bought or signed up for.
 
 What it does, from its own pages: a lead intake form you embed on your site or share as a link, instant quotes, deposits collected at booking, invoices, scheduling and a client list. Website embed widgets are on every plan, including the free one.
 
+**Decided (Trevor, Nov 25, voice call, fillers removed):** "everything should be run through Square, so invoicing and all of that. Flashquotes would just be the tool to help people get into the sales funnel." So Flashquotes handles the form, the quote and the follow-up, and its payment features stay switched off.
+
 Plan:
 
 1. Build the intake form in Flashquotes with the same fields as the placeholder: name, email, phone, event date, guest count, event type, what they want (coffee bar, sandwiches, juices, deli sides), venue and notes.
 2. Paste its embed code into the catering template where the placeholder form is, and style it to match.
 3. Set up the coffee bar packages and pricing in Flashquotes so quotes go out without retyping.
-4. Connect Google Calendar and GA4 (both listed as Flashquotes integrations) so bookings land on the calendar and quote requests count as conversions.
+4. Leave Flashquotes' deposit and online payment features off (they run on Stripe), and word its quote emails so the next step is a Square invoice, not a pay button.
+5. When a client accepts a quote, send a Square invoice for the deposit, then one for the balance before the event. That matches the FAQ already on the catering page. The client and the event go into Square's customer directory, so catering sales sit alongside shop and cart sales.
+6. Connect Google Calendar and GA4 (both listed as Flashquotes integrations) so bookings land on the calendar and quote requests count as conversions.
 
-**One catch:** Flashquotes takes payments through **Stripe**, not Square. Its pages list no Square, WooCommerce or WordPress integration. So catering deposits wouldn't go through Square unless they're invoiced from Square instead. That's a choice for Trevor (see open questions).
+Flashquotes lists no Square integration, so the hand-off from an accepted quote to a Square invoice is a manual step at first. If catering volume grows, Zapier (a listed Flashquotes integration) could create the Square customer or a draft invoice when a quote is accepted. That's untested.
 
 ## Menu page
 
@@ -127,7 +135,8 @@ Worth checking while that lands: the sample menu lists the whole bean coffees as
 - Test orders on the sandbox: card, Apple Pay, Google Pay, a refund, a counter sale that drops online stock.
 
 ### Phase 4: catering
-- Build the Flashquotes intake form and packages, embed it, connect Google Calendar and GA4, send a test quote end to end.
+- Build the Flashquotes intake form and packages with payments off, embed it, connect Google Calendar and GA4.
+- Run one test end to end: form, quote, accepted quote, Square deposit invoice, Square balance invoice.
 
 ### Phase 5: launch
 - Point the domain at Hostinger, install SSL, redirect the old GitHub Pages addresses.
@@ -137,11 +146,10 @@ Worth checking while that lands: the sample menu lists the whole bean coffees as
 ## Open questions for Trevor
 
 1. **Which Square account?** Tidewell's sales could run through Bodega's Square account as a separate location, or through a Tidewell account of its own. The plugin connects to one account, so this decides where online sales and stock live.
-2. **Catering deposits:** take them through Flashquotes (Stripe, plus the 3% platform fee) or invoice from Square so all money lands in one place?
-3. **Domain:** what's the Tidewell domain, and is it already registered?
-4. **What sells online at launch:** just the coffee bags, or also merch, gift cards or subscriptions?
-5. **Shipping or pickup:** ship bags, offer pickup at Bodega and the cart, or both?
-6. **Hosting:** use an existing Hostinger plan, or start a new one for Tidewell?
+2. **Domain:** what's the Tidewell domain, and is it already registered?
+3. **What sells online at launch:** just the coffee bags, or also merch, gift cards or subscriptions?
+4. **Shipping or pickup:** ship bags, offer pickup at Bodega and the cart, or both?
+5. **Hosting:** use an existing Hostinger plan, or start a new one for Tidewell?
 
 ## Suggestions (for Trevor to pick from, not decisions)
 
