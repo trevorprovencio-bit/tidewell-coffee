@@ -5,6 +5,7 @@ Draft for Trevor's review, Nov 25, 2026. Nothing in here is built yet. Prices we
 ## The short version
 
 - **Store:** WooCommerce runs the shop (bags of coffee now, more later). That means WordPress, so the site moves off GitHub Pages to a PHP host. Hostinger is the suggested pick, since Trevor already uses it.
+- **Square account:** Tidewell gets its own Square account, separate from Bodega's (Trevor, Nov 25).
 - **Payments and stock:** the official WooCommerce Square plugin takes card, Apple Pay and Google Pay payments into Square, and keeps products, prices and stock in sync. Square is the system of record, so the bags on the Bodega shelf and the bags sold online come out of one count.
 - **Catering:** the catering page keeps its design, and the placeholder quote form is swapped for the Flashquotes intake form. Flashquotes only captures leads and builds quotes; every deposit, invoice and payment goes through Square (Trevor's call, Nov 25).
 - **Menu:** the menu page rework toward Ephraim's sample menu is happening separately, in its own pull request. This plan only plans around it.
@@ -81,7 +82,7 @@ The comparison table lists ecommerce features as not available on Premium and in
 | Flashquotes | Free plan, or Plus $49, Pro $99, Scale $199 a month billed annually; 14-day trial | [Flashquotes pricing](https://flashquotes.com/pricing) |
 | Catering invoices (Square) | 2.9% + 30¢ per paid invoice on Square Plus or Premium, 3.3% + 30¢ on Square Free | [Square fees](https://squareup.com/help/us/en/article/5068) |
 | Flashquotes payments | Not used. Its 3% platform fee and Stripe processing only apply to payments taken in Flashquotes | [Flashquotes pricing](https://flashquotes.com/pricing) |
-| Domain | Not priced yet; depends on whether Tidewell already owns one | |
+| Domain | tidewellcoffee.com is already registered; owner not confirmed (see open questions) | Hostinger availability check, Nov 25 |
 
 Nothing here has been bought or signed up for.
 
@@ -121,7 +122,7 @@ Worth checking while that lands: the sample menu lists the whole bean coffees as
 
 ### Phase 1: set up the foundations
 - Hosting plan and a WordPress install on a staging address.
-- A Square sandbox app for testing, then the real Tidewell Square location.
+- A Square sandbox app for testing, then Tidewell's own Square account (separate from Bodega's).
 - Set up the coffees in Square with grind variations, SKUs, prices, images and stock.
 
 ### Phase 2: theme port
@@ -139,17 +140,16 @@ Worth checking while that lands: the sample menu lists the whole bean coffees as
 - Run one test end to end: form, quote, accepted quote, Square deposit invoice, Square balance invoice.
 
 ### Phase 5: launch
-- Point the domain at Hostinger, install SSL, redirect the old GitHub Pages addresses.
+- Point the domain (tidewellcoffee.com, once its owner is confirmed) at Hostinger, install SSL, redirect the old GitHub Pages addresses.
 - One real order with a real card, refunded.
 - Update privacy and terms for online sales, then switch GitHub Pages off.
 
 ## Open questions for Trevor
 
-1. **Which Square account?** Tidewell's sales could run through Bodega's Square account as a separate location, or through a Tidewell account of its own. The plugin connects to one account, so this decides where online sales and stock live.
-2. **Domain:** what's the Tidewell domain, and is it already registered?
-3. **What sells online at launch:** just the coffee bags, or also merch, gift cards or subscriptions?
-4. **Shipping or pickup:** ship bags, offer pickup at Bodega and the cart, or both?
-5. **Hosting:** use an existing Hostinger plan, or start a new one for Tidewell?
+1. **Domain:** who holds tidewellcoffee.com, and where? It's registered (a Hostinger availability check on Nov 25 showed it taken), but it isn't in Trevor's Hostinger account and his Gmail has no registrar mail for it. If a partner or another registrar holds it, launch needs its DNS pointed at Hostinger, or the domain moved into Trevor's account.
+2. **What sells online at launch:** just the coffee bags, or also merch, gift cards or subscriptions?
+3. **Shipping or pickup:** ship bags, offer pickup at Bodega and the cart, or both?
+4. **Hosting:** use an existing Hostinger plan, or start a new one for Tidewell?
 
 ## Suggestions (for Trevor to pick from, not decisions)
 
