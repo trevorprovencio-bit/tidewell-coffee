@@ -3,23 +3,43 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Visit us in San Marcos and Oceanside | Tidewell Coffee Co.</title>
+<title>Visit and contact | Tidewell Coffee Co.</title>
 <meta name="description" content="Find Tidewell Coffee Co. at The Sanctuary by The Lost Abbey in San Marcos and inside Bodega Market in Oceanside. Addresses, hours and directions.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%278%27 fill=%27%2334506E%27/%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%277%27 fill=%27%23F6EBD9%27/%3E%3C/svg%3E">
-<link rel="stylesheet" href="base.css?v=18">
+<link rel="stylesheet" href="base.css?v=21">
 <style>
   footer { --foot-bg: var(--navy); }
   .page-head .wrap { display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: end; }
   .page-head .sun { width: 280px; color: var(--navy); transform: rotate(calc(var(--turn, 0) * 1deg)); }
   #where { padding-top: 0; }
+  #contact { background: var(--paper); scroll-margin-top: 96px; }
+  .contact { display: grid; grid-template-columns: 5fr 7fr; gap: 64px; align-items: start; }
+  .contact h2 { font-size: 48px; line-height: 1; letter-spacing: -0.02em; margin-bottom: 16px; }
+  .contact-copy > p { font-size: 20px; line-height: 28px; max-width: 440px; }
+  .ways { list-style: none; padding: 0; margin: 32px 0 0; border-top: 1.5px solid var(--ink); }
+  .ways a { display: grid; grid-template-columns: 24px 1fr 24px; gap: 16px; align-items: center; padding: 16px 0; border-bottom: 1.5px solid var(--ink); min-height: 48px; }
+  .ways i { font-size: 24px; color: var(--navy); } .ways i:last-child { transition: transform 500ms var(--ease); }
+  .ways a:hover i:last-child { transform: translateX(4px); }
+  .ways b { display: block; font-weight: 600; } .ways span { display: block; font-size: 14px; line-height: 20px; color: var(--muted); }
+  /* PLACEHOLDER FORM: validates in the browser but sends nothing until it is wired to an inbox */
+  .cform { background: var(--cream); border: 1.5px solid var(--ink); border-radius: 16px; padding: 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .cform label { display: grid; gap: 4px; font-size: 14px; line-height: 20px; font-weight: 600; }
+  .cform .full { grid-column: 1 / -1; }
+  .cform input, .cform select, .cform textarea { font: inherit; font-size: 16px; line-height: 24px; font-weight: 400; color: var(--ink); background: #fff; border: 1.5px solid var(--ink); border-radius: 8px; padding: 12px; width: 100%; min-height: 48px; transition: box-shadow 300ms var(--ease); }
+  .cform textarea { min-height: 144px; resize: vertical; }
+  .cform input:focus-visible, .cform select:focus-visible, .cform textarea:focus-visible { outline: none; box-shadow: 0 0 0 3px var(--seafoam); }
+  .cform [aria-invalid="true"] { border-color: #A3341F; }
+  .cform .btn { justify-self: start; }
+  .cform-msg { grid-column: 1 / -1; font-weight: 600; min-height: 24px; }
   .band { background: var(--olive); color: var(--cream); }
   .band .wrap { display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
   .band h2 { font-size: 48px; line-height: 1; letter-spacing: -0.02em; max-width: 680px; }
   .band p { margin-top: 12px; font-size: 18px; line-height: 28px; max-width: 560px; }
   .band .btn { background: var(--cream); color: var(--brown); }
+  @media (max-width: 900px) { .contact { grid-template-columns: 1fr; gap: 32px; } .contact h2 { font-size: 36px; line-height: 40px; } .cform { grid-template-columns: 1fr; padding: 24px; } .cform label { grid-column: 1 / -1; } }
   @media (max-width: 900px) { .page-head .wrap { grid-template-columns: 1fr; gap: 24px; } .page-head .sun { width: 160px; } .band h2 { font-size: 36px; line-height: 40px; } }
 </style>
 </head>
@@ -34,6 +54,28 @@
   <section id="where">
     <div class="wrap"><div class="locs" data-locations="full"></div></div>
   </section>
+  <section id="contact" class="grain">
+    <div class="wrap contact">
+      <div class="contact-copy">
+        <h2>Get in touch</h2>
+        <p>A question about an order, the menu or either location? Send a note and one of us will write back.</p>
+        <ul class="ways">
+          <li><a href="https://www.instagram.com/tidewellcoffeeco/" target="_blank" rel="noopener"><i class="ph ph-instagram-logo"></i><div><b>Message us on Instagram</b><span>tidewellcoffeeco, usually the fastest reply</span></div><i class="ph ph-arrow-up-right"></i></a></li>
+          <li><a href="catering.html#quote"><i class="ph ph-calendar-check"></i><div><b>Booking the cart for an event</b><span>Use the catering quote form</span></div><i class="ph ph-arrow-right"></i></a></li>
+          <li><a href="https://www.instagram.com/bodegamarket.shop/" target="_blank" rel="noopener"><i class="ph ph-storefront"></i><div><b>Something about Bodega Market</b><span>bodegamarket.shop on Instagram</span></div><i class="ph ph-arrow-up-right"></i></a></li>
+        </ul>
+      </div>
+      <!-- PLACEHOLDER: this form sends nothing yet. Wire it to an inbox when the site moves to WordPress. -->
+      <form class="cform" novalidate aria-label="Contact Tidewell Coffee Co.">
+        <label>Your name<input name="name" autocomplete="name" required></label>
+        <label>Email<input name="email" type="email" autocomplete="email" required></label>
+        <label class="full">What is it about?<select name="topic"><option>A general question</option><option>An online order</option><option>The San Marcos cart</option><option>Oceanside at Bodega Market</option><option>Something else</option></select></label>
+        <label class="full">Your message<textarea name="message" required></textarea></label>
+        <button class="btn">Send message<i class="ph ph-arrow-right"></i></button>
+        <p class="cform-msg" role="status"></p>
+      </form>
+    </div>
+  </section>
   <section class="band grain">
     <div class="wrap">
       <div><h2>Cannot get to us? We will come to you.</h2><p>The coffee bar travels, with sandwiches, juices and deli sides from Bodega Market if you want them.</p></div>
@@ -41,7 +83,18 @@
     </div>
   </section>
 </main>
-<script src="base.js?v=18"></script>
-<script src="birds.js?v=18"></script>
+<script src="base.js?v=21"></script>
+<script>
+  // Mock validation for the placeholder contact form. Nothing is sent anywhere.
+  const cf = document.querySelector('.cform'), cmsg = cf.querySelector('.cform-msg');
+  cf.addEventListener('submit', e => {
+    e.preventDefault();
+    const bad = [...cf.querySelectorAll('[required]')].filter(f => { const no = !f.value.trim() || (f.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.value)); f.setAttribute('aria-invalid', no); return no; });
+    if (bad.length) { cmsg.textContent = `${bad.length === 1 ? 'One field needs' : bad.length + ' fields need'} a look. Check the ones outlined in red.`; bad[0].focus(); return; }
+    cmsg.textContent = `Thanks, ${cf.elements.name.value.trim().split(' ')[0]}. Your message is in and we will reply to ${cf.elements.email.value.trim()}.`;
+    cf.elements.message.value = '';
+  });
+</script>
+<script src="birds.js?v=21"></script>
 </body>
 </html>

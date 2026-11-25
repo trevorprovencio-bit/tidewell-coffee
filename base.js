@@ -13,11 +13,11 @@ const MENU = {
 // Addresses and Oceanside hours come from the two Instagram profiles.
 // PLACEHOLDER: San Marcos hours are not published anywhere yet.
 const LOCATIONS = [
-  { id: 'san-marcos', name: 'San Marcos', place: 'At The Sanctuary by The Lost Abbey', addr: ['1215 San Elijo Rd S', 'San Marcos, CA'],
+  { id: 'san-marcos', page: 'san-marcos.html', name: 'San Marcos', place: 'At The Sanctuary by The Lost Abbey', addr: ['1215 San Elijo Rd S', 'San Marcos, CA'],
     blurb: 'The original Tidewell cart, parked in San Elijo Hills. Espresso, specialty lattes, matcha and pastries, made to order.',
     hours: [['Every day', 'Hours to be added']], img: 'assets/photos/cart-front.jpg', alt: 'The Tidewell coffee cart with its lettered front panel and a red espresso machine on the counter',
     map: 'https://www.google.com/maps/search/?api=1&query=1215+San+Elijo+Rd+S+San+Marcos+CA' },
-  { id: 'oceanside', name: 'Oceanside', place: 'Inside Bodega Market', addr: ['3529 Cannon Rd, Suite 2D', 'Oceanside, CA'],
+  { id: 'oceanside', page: 'oceanside.html', name: 'Oceanside', place: 'Inside Bodega Market', addr: ['3529 Cannon Rd, Suite 2D', 'Oceanside, CA'],
     blurb: 'Our second home. Tidewell coffee on the bar at Bodega Market, next to cold pressed juice, focaccia sandwiches and a full market.',
     hours: [['Monday to Saturday', '8am to 3pm'], ['Sunday', 'Closed']], img: 'assets/photos/bags-shelf.jpg', alt: 'Bags of Tidewell coffee on the counter at Bodega Market under the hand lettered hot coffee sign',
     map: 'https://www.google.com/maps/search/?api=1&query=Bodega+Market+3529+Cannon+Rd+Oceanside+CA' },
@@ -26,24 +26,32 @@ const TICKER = ['Small batch coffee roasted in San Diego, CA', 'Good coffee. Goo
 // Off the homepage, section links point back at it
 const PAGE = location.pathname.split('/').pop();
 const HOME = PAGE === '' || PAGE === 'index.html' ? '' : 'index.html';
-const LINKS = [['Shop coffee', HOME + '#shop'], ['Cafe menu', 'menu.html'], ['Catering', 'catering.html'], ['Visit', 'visit.html'], ['Our story', HOME + '#story']];
+const LINKS = [['Shop coffee', HOME + '#shop'], ['Cafe menu', 'menu.html'], ['Catering', 'catering.html'], ['Visit', 'visit.html'], ['Our story', HOME + '#story'], ['Contact', 'visit.html#contact']];
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const money = n => '$' + n.toFixed(2);
 
 // Ticker, nav, bag drawer and footer are identical on every page, so they are injected.
 const SUN = `<svg class="burst" viewBox="-12 -12 24 24" fill="currentColor"><circle r="3"/>${Array.from({ length: 12 }, (_, i) => `<ellipse cy="-8" rx="1.4" ry="3.4" transform="rotate(${i * 30})"/>`).join('')}</svg>`;
+// Visit drop down: a photo card per location, each with its own page and a directions link
+const IN_VISIT = PAGE === 'visit.html' || LOCATIONS.some(l => l.page === PAGE);
+const VISIT_DROP = `<div class="has-drop"><a class="drop-trigger" href="visit.html" aria-haspopup="true" aria-expanded="false"${IN_VISIT ? ' aria-current="page"' : ''}>Visit<i class="ph ph-caret-down"></i></a>
+  <div class="drop"><div class="drop-in">${LOCATIONS.map(l => `
+    <div class="drop-card"><img src="${l.img}" alt="" loading="lazy">
+      <div class="drop-copy"><h3>${l.name}</h3><p>${l.place}</p>
+        <p class="drop-acts"><a class="btn" href="${l.page}">Read more</a><a class="btn" href="${l.map}" target="_blank" rel="noopener">Directions</a></p></div>
+    </div>`).join('')}</div></div></div>`;
 const tick = TICKER.map(t => `<span>${t}</span><span aria-hidden="true">${SUN}</span>`).join('');
 document.body.insertAdjacentHTML('afterbegin', `
   <a class="skip" href="#main">Skip to content</a>
   <div class="ticker"><div class="ticker-track">${tick}${tick}</div></div>
   <header class="nav">
     <a href="${HOME || '#main'}" aria-label="Tidewell Coffee Co. home"><span class="art logo"></span></a>
-    <nav class="nav-links" aria-label="Main">${LINKS.map(([t, h]) => `<a href="${h}"${h === PAGE ? ' aria-current="page"' : ''}>${t}</a>`).join('')}</nav>
+    <nav class="nav-links" aria-label="Main">${LINKS.map(([t, h]) => t === 'Visit' ? VISIT_DROP : `<a href="${h}"${h === PAGE ? ' aria-current="page"' : ''}>${t}</a>`).join('')}</nav>
     <button class="btn sm bag-btn" aria-haspopup="dialog" aria-controls="bag">Bag<span class="bag-count" aria-hidden="true">0</span></button>
     <button class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
   </header>
-  <div class="menu-panel">${LINKS.map(([t, h], i) => `<a href="${h}" style="--i:${i}">${t}</a>`).join('')}</div>
+  <div class="menu-panel">${LINKS.map(([t, h], i) => `<a href="${h}" style="--i:${i}">${t}</a>${t === 'Visit' ? LOCATIONS.map(l => `<a class="sub" href="${l.page}" style="--i:${i}">${l.name}</a>`).join('') : ''}`).join('')}</div>
   <div class="bag-scrim"></div>
   <aside class="bag" id="bag" role="dialog" aria-modal="true" aria-label="Your bag" inert>
     <div class="bag-head"><h2>Your bag</h2><button class="bag-close" aria-label="Close bag"><i class="ph ph-x"></i></button></div>
@@ -60,7 +68,7 @@ document.body.insertAdjacentHTML('beforeend', `
     <div class="foot-grid">
       <div><h4>Shop</h4>${COFFEES.map(c => `<a href="product.html?c=${c.id}">${c.name}</a>`).join('')}</div>
       <div><h4>Cafe</h4><a href="menu.html">Menu</a><a href="catering.html">Catering</a><a href="${HOME}#story">Our story</a></div>
-      <div><h4>Find us</h4>${LOCATIONS.map(l => `<a href="visit.html#${l.id}">${l.name}</a>`).join('')}<a href="https://www.instagram.com/tidewellcoffeeco/" target="_blank" rel="noopener">Instagram</a></div>
+      <div><h4>Find us</h4>${LOCATIONS.map(l => `<a href="${l.page}">${l.name}</a>`).join('')}<a href="visit.html#contact">Contact</a><a href="https://www.instagram.com/tidewellcoffeeco/" target="_blank" rel="noopener">Instagram</a></div>
       <div><h4>Notes from the roaster</h4><p>New roasts and cafe news, sent now and then.</p>
         <form class="news" novalidate><input type="email" placeholder="Email address" aria-label="Email address" required><button class="btn sm">Sign me up</button></form>
         <p class="news-msg" role="status"></p></div>
@@ -89,7 +97,7 @@ $$('[data-menu]').forEach(el => {
 });
 $$('[data-locations]').forEach(el => {
   const full = el.dataset.locations === 'full';
-  el.innerHTML = LOCATIONS.map(l => `
+  el.innerHTML = LOCATIONS.filter(l => !el.dataset.only || l.id === el.dataset.only).map(l => `
     <article class="loc reveal" id="${l.id}">
       <img src="${l.img}" alt="${l.alt}" loading="lazy">
       <div class="loc-body">
@@ -97,10 +105,20 @@ $$('[data-locations]').forEach(el => {
         ${full ? `<p>${l.blurb}</p>` : ''}
         <address>${l.addr.join('<br>')}</address>
         <dl>${l.hours.map(([d, h]) => `<div><dt>${d}</dt><dd>${h}</dd></div>`).join('')}</dl>
-        <p class="loc-links"><a class="btn sm" href="${l.map}" target="_blank" rel="noopener">Get directions<i class="ph ph-arrow-up-right"></i></a>${full ? `<a class="link" href="menu.html">See the menu<i class="ph ph-arrow-right"></i></a>` : `<a class="link" href="visit.html#${l.id}">More about ${l.name}<i class="ph ph-arrow-right"></i></a>`}</p>
+        <p class="loc-links"><a class="btn sm" href="${l.map}" target="_blank" rel="noopener">Get directions<i class="ph ph-arrow-up-right"></i></a><a class="link" href="${l.page}">What is at ${l.name}<i class="ph ph-arrow-right"></i></a></p>
       </div>
     </article>`).join('');
 });
+
+// Visit drop down: opens on hover or keyboard focus, closes on leaving the header or pressing Escape
+const dropWrap = $('.has-drop'), dropTrig = $('.drop-trigger');
+const setDrop = open => { $('.nav').classList.toggle('drop-open', open); dropTrig.setAttribute('aria-expanded', open); };
+dropWrap.addEventListener('mouseenter', () => setDrop(true));
+$('.nav').addEventListener('mouseleave', () => setDrop(false));
+$$('.nav-links > a').forEach(a => a.addEventListener('mouseenter', () => setDrop(false)));
+dropWrap.addEventListener('focusin', () => setDrop(true));
+dropWrap.addEventListener('focusout', e => { if (!dropWrap.contains(e.relatedTarget)) setDrop(false); });
+addEventListener('keydown', e => { if (e.key === 'Escape' && $('.nav').classList.contains('drop-open')) { setDrop(false); dropTrig.focus(); } });
 
 // Nav toggle
 const toggle = $('.nav-toggle');
