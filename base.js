@@ -35,6 +35,11 @@ const money = n => '$' + n.toFixed(2);
 const SUN = `<svg class="burst" viewBox="-12 -12 24 24" fill="currentColor"><circle r="3"/>${Array.from({ length: 12 }, (_, i) => `<ellipse cy="-8" rx="1.4" ry="3.4" transform="rotate(${i * 30})"/>`).join('')}</svg>`;
 // Visit drop down: a photo card per location, each with its own page and a directions link
 const IN_VISIT = PAGE === 'visit.html' || LOCATIONS.some(l => l.page === PAGE);
+const SOCIALS = [
+  ['Tidewell Coffee Co.', 'tidewellcoffeeco', 'https://www.instagram.com/tidewellcoffeeco/'],
+  ['Bodega Market', 'bodegamarket.shop', 'https://www.instagram.com/bodegamarket.shop/'],
+];
+const socials = cls => `<div class="socials ${cls}"><span class="socials-label">Follow along</span>${SOCIALS.map(([n, h, u]) => `<a href="${u}" target="_blank" rel="noopener" aria-label="${n} on Instagram"><i class="ph ph-instagram-logo" aria-hidden="true"></i>@${h}</a>`).join('')}</div>`;
 const VISIT_DROP = `<div class="has-drop"><a class="drop-trigger" href="visit.html" aria-haspopup="true" aria-expanded="false"${IN_VISIT ? ' aria-current="page"' : ''}>Visit<i class="ph ph-caret-down"></i></a>
   <div class="drop"><div class="drop-in">${LOCATIONS.map(l => `
     <div class="drop-card"><img src="${l.img.replace('photos/', 'photos/web/')}" alt="" loading="lazy">
@@ -56,7 +61,7 @@ document.body.insertAdjacentHTML('afterbegin', `
       <button class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
     </div>
   </header>
-  <div class="menu-panel">${LINKS.map(([t, h], i) => `<a href="${h}" style="--i:${i}">${t}</a>${t === 'Visit' ? LOCATIONS.map(l => `<a class="sub" href="${l.page}" style="--i:${i}">${l.name}</a>`).join('') : ''}`).join('')}</div>
+  <div class="menu-panel">${LINKS.map(([t, h], i) => `<a href="${h}" style="--i:${i}">${t}</a>${t === 'Visit' ? LOCATIONS.map(l => `<a class="sub" href="${l.page}" style="--i:${i}">${l.name}</a>`).join('') : ''}`).join('')}${socials('in-menu')}</div>
   <div class="bag-scrim"></div>
   <aside class="bag" id="bag" role="dialog" aria-modal="true" aria-label="Your bag" inert>
     <div class="bag-head"><h2>Your bag</h2><button class="bag-close" aria-label="Close bag"><i class="ph ph-x"></i></button></div>
@@ -73,12 +78,13 @@ document.body.insertAdjacentHTML('beforeend', `
     <div class="foot-grid">
       <div><h4>Shop</h4>${COFFEES.map(c => `<a href="product.html?c=${c.id}">${c.name}</a>`).join('')}</div>
       <div><h4>Cafe</h4><a href="menu.html">Menu</a><a href="catering.html">Catering</a><a href="${HOME}#story">Our story</a></div>
-      <div><h4>Find us</h4>${LOCATIONS.map(l => `<a href="${l.page}">${l.name}</a>`).join('')}<a href="visit.html#contact">Contact</a><a href="https://www.instagram.com/tidewellcoffeeco/" target="_blank" rel="noopener">Instagram</a></div>
+      <div><h4>Find us</h4>${LOCATIONS.map(l => `<a href="${l.page}">${l.name}</a>`).join('')}<a href="visit.html#contact">Contact</a></div>
       <div><h4>Notes from the roaster</h4><p>New roasts and cafe news, sent now and then.</p>
         <label class="news-label" for="news-email">Email address</label>
         <form class="news" novalidate><input id="news-email" type="email" placeholder="you@email.com" autocomplete="email" required><button class="btn sm">Sign me up</button></form>
         <p class="news-msg" role="status"></p></div>
     </div>
+    ${socials('in-foot')}
     <div class="legal"><span>© 2026 Tidewell Coffee Co. Small batch in San Diego, CA.</span><span><a href="privacy.html">Privacy policy</a><a href="terms.html">Terms</a></span></div>
   </div></footer>`);
 

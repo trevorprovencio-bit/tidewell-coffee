@@ -328,3 +328,16 @@ form.fq select, form.cform select { appearance: none; -webkit-appearance: none; 
   .foot-grid a { padding: 12px 0; }
   .legal a { display: inline-block; padding: 12px 0; }
 }
+
+/* Social links: a labelled row of Instagram handles in the footer and at the foot of the mobile menu */
+.socials { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; }
+.socials-label { font-size: 14px; line-height: 20px; font-weight: 600; margin-right: 4px; }
+.socials a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 8px 16px; border-radius: 9999px; box-shadow: inset 0 0 0 1.5px currentColor; font-size: 14px; line-height: 20px; font-weight: 600; transition: transform 300ms var(--ease), background-color 300ms var(--ease), color 300ms var(--ease); }
+.socials a i { font-size: 20px; }
+.socials a:active { transform: scale(0.98); }
+.socials.in-foot { margin-top: 48px; }
+.socials.in-foot a:hover { background: var(--foot-text, var(--cream)); color: var(--foot-bg, var(--ink)); box-shadow: none; }
+.socials.in-foot + .legal { margin-top: 32px; }
+.menu-panel .socials { margin-top: auto; padding-top: 24px; }
+.menu-panel .socials a { font-size: 14px; line-height: 20px; font-weight: 600; opacity: 1; transform: none; transition: none; }
+.menu-panel .socials a:hover { background: var(--ink); color: var(--cream); box-shadow: none; }
