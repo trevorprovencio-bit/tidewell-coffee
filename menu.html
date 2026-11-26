@@ -5,12 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Cafe menu | Tidewell Coffee Co.</title>
 <meta name="description" content="The Tidewell Coffee Co. cafe menu: espresso drinks, specialty lattes, matcha, teas and refreshers, plus whole bean coffee to take home.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Tidewell Coffee Co.">
+<meta property="og:title" content="Cafe menu | Tidewell Coffee Co.">
+<meta property="og:description" content="The Tidewell Coffee Co. cafe menu: espresso drinks, specialty lattes, matcha, teas and refreshers, plus whole bean coffee to take home.">
+<meta property="og:image" content="https://trevorprovencio-bit.github.io/tidewell-coffee/assets/share.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%278%27 fill=%27%2334506E%27/%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%277%27 fill=%27%23F6EBD9%27/%3E%3C/svg%3E">
 <script>document.documentElement.classList.add('js')</script>
-<link rel="stylesheet" href="base.css?v=27">
+<link rel="stylesheet" href="base.css?v=29">
 <style>
   /* Cafe menu, set like the printed card: one ink on paper inside a hairline frame, the skater
      up top, the motto between two rules, two columns split by a vertical rule, section titles
@@ -42,11 +50,16 @@
   .items .n { text-transform: uppercase; letter-spacing: 0.02em; }
   .items .d { flex: 1; min-width: 24px; border-bottom: 2px dotted currentColor; opacity: 0.56; transform: translateY(-4px); }
   .items b { font-weight: 400; font-variant-numeric: tabular-nums; }
+  /* Each list draws once as it scrolls in: the dotted leader runs out to the price, then the price lands */
+  :where(.js) .items .d { scale: 0 1; transform-origin: left center; transition: scale 700ms cubic-bezier(0.65, 0, 0.35, 1) calc(var(--i, 0) * 50ms); }
+  :where(.js) .items b { opacity: 0; transition: opacity 500ms var(--ease) calc(var(--i, 0) * 50ms + 400ms); }
+  .items.drawn .d { scale: 1 1; } .items.drawn b { opacity: 1; }
+  @media (prefers-reduced-motion: reduce) { .items .d, .items b { transition: none; } }
   .items .note { display: block; padding: 0 0 4px; font-size: 16px; line-height: 24px; color: var(--muted); }
   .items .plain .n { text-transform: none; letter-spacing: 0; }
   .items .gap { display: block; padding: 0; margin: 12px 0; border-top: 3px dotted var(--ink); opacity: 0.72; }
 
-  .boxed { margin-top: 12px; padding: 8px 12px; border: 1.5px solid var(--rule); border-radius: 8px; text-align: center; font-size: 18px; line-height: 28px; }
+  .boxed { margin-top: 12px; padding: 8px 12px; border: 1.5px solid var(--rule); border-radius: var(--r-md); text-align: center; font-size: 18px; line-height: 28px; }
   .ask { margin-top: 4px; font-size: 16px; line-height: 24px; color: var(--muted); }
   .mcard .btn { margin-top: 16px; background: var(--ink); color: var(--paper); }
 
@@ -117,8 +130,8 @@
 
   </div>
 </main>
-<script src="base.js?v=27"></script>
-<script src="birds.js?v=27"></script>
+<script src="base.js?v=29"></script>
+<script src="birds.js?v=29"></script>
 <script>
   // Items, prices and notes are transcribed from the printed cafe menu, in its order.
   // A third value is a note under the item; '-' is the dotted break in the coffees list.
@@ -136,6 +149,12 @@
     ul.innerHTML = LISTS[ul.dataset.list].map(it => it === '-' ? '<li class="gap" aria-hidden="true"></li>'
       : `<li${plain}><span class="n">${it[0]}</span><span class="d" aria-hidden="true"></span><b>${it[1]}</b></li>${it[2] ? `<li class="note">${it[2]}</li>` : ''}`).join('');
   });
+  // Draw each list's leaders once, when a third of it is on screen
+  const lists = [...document.querySelectorAll('.items')];
+  lists.forEach(ul => [...ul.querySelectorAll('li:not(.note)')].forEach((li, i) => li.style.setProperty('--i', i)));
+  const drawIO = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('drawn'); drawIO.unobserve(e.target); } }), { threshold: 0.3 });
+  lists.forEach(ul => drawIO.observe(ul));
+  setTimeout(() => { if (!document.querySelector('.items.drawn')) lists.forEach(ul => ul.classList.add('drawn')); }, 3000);
 </script>
 </body>
 </html>

@@ -5,12 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tidewell Coffee Co. | Small batch coffee from San Diego</title>
 <meta name="description" content="Small batch, 100% arabica coffee roasted in San Diego. Shop Signature Blend, Dreamy Dayz, Costa Sur and Decaf, or visit us in San Marcos and Oceanside.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Tidewell Coffee Co.">
+<meta property="og:title" content="Tidewell Coffee Co. | Small batch coffee from San Diego">
+<meta property="og:description" content="Small batch, 100% arabica coffee roasted in San Diego. Shop Signature Blend, Dreamy Dayz, Costa Sur and Decaf, or visit us in San Marcos and Oceanside.">
+<meta property="og:image" content="https://trevorprovencio-bit.github.io/tidewell-coffee/assets/share.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%278%27 fill=%27%2334506E%27/%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%277%27 fill=%27%23F6EBD9%27/%3E%3C/svg%3E">
 <script>document.documentElement.classList.add('js')</script>
-<link rel="stylesheet" href="base.css?v=27">
+<link rel="stylesheet" href="base.css?v=29">
 <style>
   /* Direction A + B: Costa's navy hero and tiles, Dreamy's label details and one coffee per screen. */
   .hero { background: var(--navy); color: var(--cream); padding: 80px 0 80px; overflow: hidden; }
@@ -23,12 +31,12 @@
   /* The ruled strip from the bottom of the bag label */
   .rule { display: grid; grid-template-columns: repeat(3, 1fr); text-align: center; border-bottom: 1.5px solid var(--ink); }
   .rule span { padding: 16px; font-size: 12px; line-height: 16px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; }
-  .rule span + span { box-shadow: -1.5px 0 0 var(--ink); }
+  .rule span + span { box-shadow: var(--rule-left); }
   #shop { padding-bottom: 48px; }
   .row { display: grid; grid-template-columns: 5fr 7fr; gap: 64px; align-items: center; padding: 48px 0; border-top: 1.5px solid var(--ink); }
   .row:nth-child(even) { grid-template-columns: 7fr 5fr; } .row:nth-child(even) .row-img { order: 2; }
-  .row-img { background: var(--tint); padding: 48px 80px; border-radius: 16px; }
-  .row-img img { box-shadow: 0 16px 32px rgba(27, 24, 21, 0.28); transition: transform 500ms var(--ease); }
+  .row-img { background: var(--tint); padding: 48px 80px; border-radius: var(--r-xl); }
+  .row-img img { box-shadow: var(--shadow-md); transition: transform 500ms var(--ease); }
   .row h3 { font-size: 60px; line-height: 1; letter-spacing: -0.02em; margin: 0 0 16px; }
   .row-notes { font-size: 20px; line-height: 28px; max-width: 480px; }
   .row dl { display: grid; grid-template-columns: repeat(3, auto); justify-content: start; gap: 40px; margin: 32px 0; }
@@ -36,11 +44,11 @@
   .row dd { margin: 4px 0 0; font-weight: 600; }
   .tagline { background: var(--olive); color: var(--cream); }
   .tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-  .tile { aspect-ratio: 4 / 5; border-radius: 16px; overflow: hidden; padding: 32px; display: flex; flex-direction: column; justify-content: space-between; background: var(--tb); color: var(--tc); transition: transform 500ms var(--ease); }
-  .tile:hover { transform: translateY(-4px); } .tile:active { transform: scale(0.98); }
+  .tile { aspect-ratio: 4 / 5; border-radius: var(--r-xl); overflow: hidden; padding: 32px; display: flex; flex-direction: column; justify-content: space-between; background: var(--tb); color: var(--tc); transition: transform 500ms var(--ease); }
+  @media (hover: hover) and (pointer: fine) { .tile:hover { transform: translateY(-4px); } } .tile:active { transform: scale(0.98); }
   .tile h3 { font-size: 36px; line-height: 40px; }
   .tile .art { width: 100%; transition: transform 500ms var(--ease); }
-  .tile:hover .art { transform: scale(1.04); }
+  @media (hover: hover) and (pointer: fine) { .tile:hover .art { transform: scale(1.04); } }
   #menu { background: var(--paper); }
   footer { --foot-bg: var(--navy); }
   @media (max-width: 900px) {
@@ -99,8 +107,8 @@
     </div>
   </section>
 </main>
-<script src="base.js?v=27"></script>
-<script type="module" src="hero-sea.js?v=27"></script>
-<script src="birds.js?v=27"></script>
+<script src="base.js?v=29"></script>
+<script type="module" src="hero-sea.js?v=29"></script>
+<script src="birds.js?v=29"></script>
 </body>
 </html>

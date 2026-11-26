@@ -210,6 +210,10 @@ if (pxRows.length && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
   pxPaint();
 }
 
+// Tile art idles only while its tile is on screen
+const tileIO = new IntersectionObserver(es => es.forEach(e => e.target.classList.toggle('live', e.isIntersecting)), { threshold: 0.3 });
+$$('.tile').forEach(t => tileIO.observe(t));
+
 // The footer skater only rides while the footer edge is on screen
 new IntersectionObserver(([e]) => $('.rider').classList.toggle('go', e.isIntersecting), { rootMargin: '0px 0px -40px 0px' }).observe($('footer'));
 

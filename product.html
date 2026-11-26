@@ -5,19 +5,27 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Shop coffee | Tidewell Coffee Co.</title>
 <meta name="description" content="Small batch, 100% arabica coffee from Tidewell Coffee Co. Whole bean or ground to order, in 12 oz bags.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Tidewell Coffee Co.">
+<meta property="og:title" content="Shop coffee | Tidewell Coffee Co.">
+<meta property="og:description" content="Small batch, 100% arabica coffee from Tidewell Coffee Co. Whole bean or ground to order, in 12 oz bags.">
+<meta property="og:image" content="https://trevorprovencio-bit.github.io/tidewell-coffee/assets/share.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%278%27 fill=%27%2334506E%27/%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%277%27 fill=%27%23F6EBD9%27/%3E%3C/svg%3E">
 <script>document.documentElement.classList.add('js')</script>
-<link rel="stylesheet" href="base.css?v=27">
+<link rel="stylesheet" href="base.css?v=29">
 <style>
   footer { --foot-bg: var(--navy); }
   .pdp { padding: 48px 0 96px; }
   .pdp .wrap { display: grid; grid-template-columns: 5fr 7fr; gap: 64px; align-items: start; }
-  .pdp-img { position: sticky; top: 120px; background: var(--tint); border-radius: 16px; padding: 48px 80px; aspect-ratio: 473 / 619; display: grid; place-items: center; }
+  .pdp-img { position: sticky; top: 120px; background: var(--tint); border-radius: var(--r-xl); padding: 48px 80px; aspect-ratio: 473 / 619; display: grid; place-items: center; }
   .pdp-img img { max-height: 100%; width: auto; filter: drop-shadow(0 16px 16px rgba(27, 24, 21, 0.28)); transform: rotate(-2deg); transition: transform 500ms var(--ease); }
-  .pdp-img:hover img { transform: rotate(0deg) scale(1.03); }
+  @media (hover: hover) and (pointer: fine) { .pdp-img:hover img { transform: rotate(0deg) scale(1.03); } }
   .crumb { font-size: 14px; line-height: 20px; color: var(--muted); margin-bottom: 24px; } .crumb a { text-decoration: underline; text-underline-offset: 4px; }
   .pdp h1 { font-size: 72px; line-height: 1; letter-spacing: -0.02em; }
   .pdp-notes { margin-top: 16px; font-size: 20px; line-height: 28px; max-width: 480px; }
@@ -28,7 +36,7 @@
   .pdp dd { margin: 4px 0 0; font-weight: 600; }
   .pdp fieldset { border: 0; padding: 0; margin: 0 0 24px; display: flex; flex-wrap: wrap; gap: 8px; }
   .pdp legend { padding: 0; margin-bottom: 8px; font-weight: 600; }
-  .chip { display: inline-flex; align-items: center; min-height: 48px; padding: 12px 16px; border-radius: 8px; box-shadow: inset 0 0 0 1.5px var(--ink); font-weight: 500; cursor: pointer; transition: background-color 300ms var(--ease), color 300ms var(--ease); }
+  .chip { display: inline-flex; align-items: center; min-height: 48px; padding: 12px 16px; border-radius: var(--r-md); box-shadow: var(--outline-ink); font-weight: 500; cursor: pointer; transition: background-color 300ms var(--ease), color 300ms var(--ease); }
   .chip input { position: absolute; opacity: 0; pointer-events: none; }
   .chip:has(:checked) { background: var(--ink); color: var(--cream); }
   .chip:has(:focus-visible) { outline: 2px solid var(--navy); outline-offset: 4px; }
@@ -88,8 +96,8 @@
   window.__c = new URLSearchParams(location.search).get('c');
   document.querySelector('[data-coffees]').dataset.skip = ['signature', 'dreamy', 'costasur', 'decaf'].includes(window.__c) ? window.__c : 'signature';
 </script>
-<script src="base.js?v=27"></script>
-<script src="birds.js?v=27"></script>
+<script src="base.js?v=29"></script>
+<script src="birds.js?v=29"></script>
 <script>
   const c = COFFEES.find(x => x.id === window.__c) || COFFEES[0];
   document.title = `${c.name} coffee, 12 oz | Tidewell Coffee Co.`;
