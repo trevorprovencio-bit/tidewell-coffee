@@ -17,7 +17,7 @@ const LOCATIONS = [
     blurb: 'The original Tidewell cart, parked in San Elijo Hills. Espresso, specialty lattes, matcha and pastries, made to order.',
     hours: [['Every day', 'Hours to be added']], img: 'assets/photos/cart-front.jpg', alt: 'The Tidewell coffee cart with its lettered front panel and a red espresso machine on the counter',
     map: 'https://www.google.com/maps/search/?api=1&query=1215+San+Elijo+Rd+S+San+Marcos+CA' },
-  { id: 'oceanside', page: 'oceanside.html', name: 'Oceanside', place: 'Inside Bodega Market', addr: ['3529 Cannon Rd, Suite 2D', 'Oceanside, CA'],
+  { id: 'oceanside', page: 'oceanside.html', name: 'Oceanside', place: 'Inside Bodega Market', cardPlace: false, addr: ['3529 Cannon Rd, Suite 2D', 'Oceanside, CA'],
     blurb: 'Our second home. Tidewell coffee on the bar at Bodega Market, next to cold pressed juice, focaccia sandwiches and a full market.',
     hours: [['Monday to Saturday', '8am to 3pm'], ['Sunday', 'Closed']], img: 'assets/photos/bags-shelf.jpg', alt: 'Bags of Tidewell coffee on the counter at Bodega Market under the hand lettered hot coffee sign',
     map: 'https://www.google.com/maps/search/?api=1&query=Bodega+Market+3529+Cannon+Rd+Oceanside+CA' },
@@ -113,7 +113,7 @@ $$('[data-locations]').forEach(el => {
     <article class="loc reveal" id="${l.id}">
       <img src="${l.img.replace('photos/', 'photos/web/')}" alt="${l.alt}" loading="lazy">
       <div class="loc-body">
-        <h3>${l.name}</h3><p class="loc-place">${l.place}</p>
+        <h3>${l.name}</h3>${l.cardPlace === false ? '' : `<p class="loc-place">${l.place}</p>`}
         ${full ? `<p>${l.blurb}</p>` : ''}
         <address>${l.addr.join('<br>')}</address>
         <dl>${l.hours.map(([d, h]) => `<div><dt>${d}</dt><dd>${h}</dd></div>`).join('')}</dl>
