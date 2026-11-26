@@ -107,7 +107,7 @@ section { padding: 96px 0; }
 
 /* Footer */
 footer { background: var(--foot-bg, var(--ink)); color: var(--foot-text, var(--cream)); padding: 80px 0 32px; }
-footer .logo { width: min(100%, 560px); margin-bottom: 64px; transform: translateX(-3.7%); }
+footer .logo { width: min(100%, 560px); margin-bottom: 64px; transform: translateX(-7.6%); aspect-ratio: 1200 / 272; -webkit-mask-size: 100% auto; mask-size: 100% auto; -webkit-mask-position: bottom; mask-position: bottom; }
 .foot-grid { display: grid; grid-template-columns: 1fr 1fr 1fr 2fr; gap: 32px; }
 .foot-grid h4 { font-size: 14px; line-height: 20px; font-weight: 600; margin-bottom: 12px; }
 .foot-grid a, .foot-grid p { display: block; font-size: 14px; line-height: 20px; opacity: 0.84; padding: 4px 0; }
