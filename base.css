@@ -371,3 +371,14 @@ form.fq select, form.cform select { appearance: none; -webkit-appearance: none; 
   --focus-ring: 0 0 0 3px var(--seafoam);
   --shadow-sm: 0 12px 24px rgba(27, 24, 21, 0.24); --shadow-md: 0 16px 32px rgba(27, 24, 21, 0.28); --shadow-lg: 0 24px 48px rgba(27, 24, 21, 0.16);
 }
+
+/* Location cards stack one above the other on wide screens: photo on one half, details on the other, sides alternating */
+@media (min-width: 901px) {
+  .locs { grid-template-columns: 1fr; }
+  .loc { flex-direction: row; align-items: stretch; }
+  .loc:nth-child(even) { flex-direction: row-reverse; }
+  .loc img { width: 50%; flex: none; aspect-ratio: 3 / 2; }
+  .loc-body { padding: 40px 48px; justify-content: center; gap: 20px; }
+  .loc h3 { font-size: 48px; line-height: 1; }
+  .loc-links { margin-top: 8px; }
+}
