@@ -75,8 +75,8 @@ section { padding: 96px 0; }
 .sec-head h2 { font-size: 36px; line-height: 40px; }
 .hero h1, .hero .sub { max-width: 680px; }
 .hero .sub { font-size: 18px; line-height: 28px; }
-.reveal { opacity: 0; transform: translateY(32px); transition: transform 700ms var(--ease), opacity 700ms var(--ease); }
-.reveal.in { opacity: 1; transform: none; }
+:where(.js) .reveal { opacity: 0; transform: translateY(32px); transition: transform 700ms var(--ease), opacity 700ms var(--ease); }
+:where(.js) .reveal.in { opacity: 1; transform: none; }
 
 /* Product cards */
 .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
@@ -169,7 +169,7 @@ footer input { caret-color: currentColor; }
 .price, .row dd { font-variant-numeric: tabular-nums; }
 
 /* A skater rides along the top edge of the footer, left to right, then waits off screen and goes again */
-footer { position: relative; }
+footer { position: relative; overflow-x: clip; }
 .rider { position: absolute; left: 0; bottom: calc(100% - 2px); width: 116px; color: var(--foot-bg, var(--ink)); pointer-events: none; z-index: 1; transform: translateX(-160px); animation: ride 16s linear infinite; animation-play-state: paused; }
 .rider.go { animation-play-state: running; }
 @keyframes ride { 0% { transform: translateX(-160px); } 78%, 100% { transform: translateX(100vw); } }
@@ -316,3 +316,15 @@ footer { position: relative; }
 
 /* Select boxes: the browser's arrow hugs the edge, so draw our own with room around it */
 form.fq select, form.cform select { appearance: none; -webkit-appearance: none; padding-right: 48px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%231B1815' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 6l5 5 5-5'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; background-size: 16px 16px; cursor: pointer; }
+
+/* Checker fixes: visible newsletter label, thumb sized targets on phones, a deeper olive behind small cream text */
+:root { --olive-deep: #636942; }
+.news-label { display: block; font-size: 14px; line-height: 20px; font-weight: 600; margin-top: 12px; }
+.news-label + .news { margin-top: 4px; }
+@media (max-width: 900px) {
+  .nav-toggle { width: 44px; height: 44px; }
+  .nav-toggle span { left: 12px; right: 12px; } .nav-toggle span:first-child { top: 17px; } .nav-toggle span:last-child { top: 25px; }
+  .nav .bag-btn, .btn.sm, .news input { min-height: 44px; }
+  .foot-grid a { padding: 12px 0; }
+  .legal a { display: inline-block; padding: 12px 0; }
+}

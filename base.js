@@ -37,7 +37,7 @@ const SUN = `<svg class="burst" viewBox="-12 -12 24 24" fill="currentColor"><cir
 const IN_VISIT = PAGE === 'visit.html' || LOCATIONS.some(l => l.page === PAGE);
 const VISIT_DROP = `<div class="has-drop"><a class="drop-trigger" href="visit.html" aria-haspopup="true" aria-expanded="false"${IN_VISIT ? ' aria-current="page"' : ''}>Visit<i class="ph ph-caret-down"></i></a>
   <div class="drop"><div class="drop-in">${LOCATIONS.map(l => `
-    <div class="drop-card"><img src="${l.img}" alt="" loading="lazy">
+    <div class="drop-card"><img src="${l.img.replace('photos/', 'photos/web/')}" alt="" loading="lazy">
       <div class="drop-copy"><h3>${l.name}</h3><p>${l.place}</p>
         <p class="drop-acts"><a class="btn" href="${l.page}">Read more</a><a class="btn" href="${l.map}" target="_blank" rel="noopener">Directions</a></p></div>
     </div>`).join('')}</div></div></div>`;
@@ -75,7 +75,8 @@ document.body.insertAdjacentHTML('beforeend', `
       <div><h4>Cafe</h4><a href="menu.html">Menu</a><a href="catering.html">Catering</a><a href="${HOME}#story">Our story</a></div>
       <div><h4>Find us</h4>${LOCATIONS.map(l => `<a href="${l.page}">${l.name}</a>`).join('')}<a href="visit.html#contact">Contact</a><a href="https://www.instagram.com/tidewellcoffeeco/" target="_blank" rel="noopener">Instagram</a></div>
       <div><h4>Notes from the roaster</h4><p>New roasts and cafe news, sent now and then.</p>
-        <form class="news" novalidate><input type="email" placeholder="Email address" aria-label="Email address" required><button class="btn sm">Sign me up</button></form>
+        <label class="news-label" for="news-email">Email address</label>
+        <form class="news" novalidate><input id="news-email" type="email" placeholder="you@email.com" autocomplete="email" required><button class="btn sm">Sign me up</button></form>
         <p class="news-msg" role="status"></p></div>
     </div>
     <div class="legal"><span>© 2026 Tidewell Coffee Co. Small batch in San Diego, CA.</span><span><a href="privacy.html">Privacy policy</a><a href="terms.html">Terms</a></span></div>
@@ -104,7 +105,7 @@ $$('[data-locations]').forEach(el => {
   const full = el.dataset.locations === 'full';
   el.innerHTML = LOCATIONS.filter(l => !el.dataset.only || l.id === el.dataset.only).map(l => `
     <article class="loc reveal" id="${l.id}">
-      <img src="${l.img}" alt="${l.alt}" loading="lazy">
+      <img src="${l.img.replace('photos/', 'photos/web/')}" alt="${l.alt}" loading="lazy">
       <div class="loc-body">
         <h3>${l.name}</h3><p class="loc-place">${l.place}</p>
         ${full ? `<p>${l.blurb}</p>` : ''}
@@ -127,9 +128,10 @@ addEventListener('keydown', e => { if (e.key === 'Escape' && $('.nav').classList
 
 // Nav toggle
 const toggle = $('.nav-toggle');
-const setNav = open => { document.body.classList.toggle('nav-open', open); toggle.setAttribute('aria-expanded', open); toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu'); };
+const setNav = open => { document.body.classList.toggle('nav-open', open); $('.menu-panel').inert = !open; toggle.setAttribute('aria-expanded', open); toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu'); };
 toggle.addEventListener('click', () => setNav(!document.body.classList.contains('nav-open')));
 $$('.menu-panel a').forEach(a => a.addEventListener('click', () => setNav(false)));
+$('.menu-panel').inert = true;
 
 // Bag: kept in memory and mirrored to localStorage so it survives a page change.
 // Front end only. Checkout is handed to WooCommerce and Square when the shop goes live.
@@ -173,6 +175,8 @@ bagRender();
 // Section reveals, once each
 const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: 0.12 });
 $$('.reveal').forEach(el => io.observe(el));
+// Safety net: if the observer never reports, show everything rather than leave it hidden
+setTimeout(() => { if (!$('.reveal.in')) $$('.reveal').forEach(el => el.classList.add('in')); }, 3000);
 
 // Tagline lights up one word at a time as it crosses a trigger line
 $$('.tagline p').forEach(p => { p.innerHTML = p.textContent.trim().split(/\s+/).map(w => `<span class="w">${w}</span>`).join(' '); });

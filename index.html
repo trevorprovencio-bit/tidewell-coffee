@@ -9,7 +9,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%278%27 fill=%27%2334506E%27/%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%277%27 fill=%27%23F6EBD9%27/%3E%3C/svg%3E">
-<link rel="stylesheet" href="base.css?v=25">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="stylesheet" href="base.css?v=26">
 <style>
   /* Direction A + B: Costa's navy hero and tiles, Dreamy's label details and one coffee per screen. */
   .hero { background: var(--navy); color: var(--cream); padding: 80px 0 80px; overflow: hidden; }
@@ -49,7 +50,7 @@
     .rule span { padding: 12px 4px; letter-spacing: 0.08em; }
     .row { grid-template-columns: 1fr; gap: 24px; padding: 32px 0; } .row:nth-child(even) { grid-template-columns: 1fr; } .row:nth-child(even) .row-img { order: 0; }
     .row-img { padding: 32px 64px; } .row h3 { font-size: 36px; line-height: 40px; } .row dl { grid-template-columns: 1fr 1fr; gap: 16px 24px; margin: 24px 0; }
-    .tile { aspect-ratio: 4 / 3; }
+    .tile { aspect-ratio: auto; gap: 16px; }
   }
 </style>
 </head>
@@ -78,7 +79,7 @@
 
   <section>
     <div class="wrap tiles">
-      <a class="tile reveal" href="#shop" style="--tb:var(--olive);--tc:var(--cream)"><h3>Buy some beans</h3><span class="art van"></span><span class="link">Whole bean or ground<i class="ph ph-arrow-right"></i></span></a>
+      <a class="tile reveal" href="#shop" style="--tb:var(--olive-deep);--tc:var(--cream)"><h3>Buy some beans</h3><span class="art van"></span><span class="link">Whole bean or ground<i class="ph ph-arrow-right"></i></span></a>
       <a class="tile reveal" href="menu.html" style="--tb:var(--ink);--tc:var(--cream)"><h3>See the cafe menu</h3><span class="art skater"></span><span class="link">Lattes, matcha and more<i class="ph ph-arrow-right"></i></span></a>
       <a class="tile reveal" href="visit.html" style="--tb:var(--seafoam);--tc:var(--brown)"><h3>Come say hi</h3><span class="art sun"></span><span class="link">San Marcos and Oceanside<i class="ph ph-arrow-right"></i></span></a>
     </div>
@@ -98,8 +99,8 @@
     </div>
   </section>
 </main>
-<script src="base.js?v=25"></script>
-<script type="module" src="hero-sea.js?v=25"></script>
-<script src="birds.js?v=25"></script>
+<script src="base.js?v=26"></script>
+<script type="module" src="hero-sea.js?v=26"></script>
+<script src="birds.js?v=26"></script>
 </body>
 </html>
